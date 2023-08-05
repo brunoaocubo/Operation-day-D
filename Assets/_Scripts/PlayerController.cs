@@ -101,7 +101,6 @@ public class PlayerController : MonoBehaviour
 			if(other.TryGetComponent(out HouseIdentity houseIdentity)) 
 			{
 				int houseID = houseIdentity.Id;
-				houseIdentity?.PlayDialogueHouse(houseID);
 			}
 		}
 	}
