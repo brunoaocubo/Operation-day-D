@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private float rotationSpeed;
 	[SerializeField] private float jumpForce;
+	[SerializeField] private float distanceRay = 10f;
 
 	private CinemachineImpulseSource _impulseSource;
 	private Rigidbody _rigidbody;
@@ -33,6 +34,14 @@ public class PlayerController : MonoBehaviour
 		transform.rotation = Quaternion.Euler(0f, cameraYaw, 0f);
 		gun.transform.rotation = Camera.main.transform.rotation;
 
+		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
+		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay);
+
+		if (Input.GetKey(KeyCode.F)) 
+		{
+			InteractWithObject();
+		}
+
 		/*
 		if (Input.GetMouseButtonDown(0)) 
 		{
@@ -52,7 +61,6 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Move();
-		InteractWithObject();
 	}
 
 	public void JumpAction() 
@@ -82,27 +90,30 @@ public class PlayerController : MonoBehaviour
 		_rigidbody.MovePosition(_rigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);	
 	}
 
-	private void InteractWithObject() 
+	public void InteractWithObject() 
 	{
-		if(ReturnRay().collider != null) 
+		Physics.Raycast(_ray, out _hitInfo, distanceRay);
+
+		if (_hitInfo.collider != null) 
 		{
-			if (ReturnRay().collider.CompareTag(interactTagCompare))
+			if (_hitInfo.collider.TryGetComponent(out HouseIdentity houseIdentity))
 			{
-				_hitInfo.transform.TryGetComponent(out IInteractableObject interactable);
-				interactable?.SetEnableUI();
+				int houseID = houseIdentity.Id;
+				houseIdentity?.PlaySceneHouse(houseID);
 			}
 		}
 	}
 
 	private void OnTriggerEnter(Collider other)
 	{
+		/*
 		if(other.gameObject.layer == Constants.LAYER_HOUSE) 
 		{
 			if(other.TryGetComponent(out HouseIdentity houseIdentity)) 
 			{
 				int houseID = houseIdentity.Id;
 			}
-		}
+		}*/
 	}
 
 	private void OnCollisionStay(Collision collision)
@@ -120,12 +131,5 @@ public class PlayerController : MonoBehaviour
 	private void OnCollisionExit(Collision collision)
 	{
 		_isGrounded = false;
-	}
-
-	private RaycastHit ReturnRay()
-	{
-		_ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-		Physics.Raycast(_ray, out _hitInfo);
-		return _hitInfo;
 	}
 }
