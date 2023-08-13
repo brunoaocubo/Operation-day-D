@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private float rotationSpeed;
 	[SerializeField] private float jumpForce;
-	[SerializeField] private float distanceRay = 10f;
+	[SerializeField] private float distanceRay = 1f;
 
 	private CinemachineImpulseSource _impulseSource;
 	private Rigidbody _rigidbody;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
 		_impulseSource = virtualCamera.GetComponent<CinemachineImpulseSource>();
+		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	private void Update()
