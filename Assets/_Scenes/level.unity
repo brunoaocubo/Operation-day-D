@@ -400,8 +400,8 @@ RectTransform:
   m_Children:
   - {fileID: 1360073014}
   - {fileID: 838772694}
-  - {fileID: 350706045}
   - {fileID: 1282175262}
+  - {fileID: 350706045}
   - {fileID: 925930225}
   - {fileID: 420311747}
   m_Father: {fileID: 0}
@@ -543,7 +543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 271192490}
   m_Layer: 0
-  m_Name: GunPoint
+  m_Name: ToolPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2165,13 +2165,14 @@ GameObject:
   - component: {fileID: 350706048}
   - component: {fileID: 350706047}
   - component: {fileID: 350706046}
+  - component: {fileID: 350706049}
   m_Layer: 5
-  m_Name: Fire_btn
+  m_Name: interact_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &350706045
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2189,7 +2190,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -293, y: 166}
+  m_AnchoredPosition: {x: -293, y: 160}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &350706046
@@ -2235,19 +2236,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 350706047}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1372146341}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: JumpAction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &350706047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2286,6 +2275,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 350706044}
   m_CullTransparentMesh: 1
+--- !u!114 &350706049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350706044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bb28897e5bd2246b3685f7782a2a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -14157,12 +14158,12 @@ GameObject:
   - component: {fileID: 838772696}
   - component: {fileID: 838772695}
   m_Layer: 5
-  m_Name: Jump_btn
+  m_Name: bleach_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &838772694
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14180,7 +14181,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -102, y: 272}
+  m_AnchoredPosition: {x: -102, y: 288}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &838772695
@@ -14227,9 +14228,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1372146341}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: JumpAction
+      - m_Target: {fileID: 1372146347}
+        m_TargetAssemblyTypeName: Tools, Assembly-CSharp
+        m_MethodName: EquipBleach
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14850,12 +14851,12 @@ GameObject:
   - component: {fileID: 1282175264}
   - component: {fileID: 1282175263}
   m_Layer: 5
-  m_Name: Interact_btn
+  m_Name: insecticide_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1282175262
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14873,7 +14874,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -499, y: 422}
+  m_AnchoredPosition: {x: -499, y: 416}
   m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282175263
@@ -14920,9 +14921,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1372146341}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: InteractWithObject
+      - m_Target: {fileID: 1372146347}
+        m_TargetAssemblyTypeName: Tools, Assembly-CSharp
+        m_MethodName: EquipInsecticide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20051,6 +20052,8 @@ MonoBehaviour:
   - {fileID: 596085983}
   distanceRay: 1
   damageInsecticide: 1
+  holdButton:
+  - {fileID: 350706049}
 --- !u!1 &1513185276
 GameObject:
   m_ObjectHideFlags: 0
@@ -25230,7 +25233,7 @@ PrefabInstance:
     - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

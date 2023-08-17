@@ -6,7 +6,6 @@ public class Larva : MonoBehaviour
 {
     [SerializeField] private float health = 100f;
 
-
     void Start()
     {
 

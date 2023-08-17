@@ -1,5 +1,6 @@
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tools : MonoBehaviour 
 {
@@ -7,6 +8,8 @@ public class Tools : MonoBehaviour
 	[SerializeField] private GameObject[] tool;
 	[SerializeField] private float distanceRay = 1f;
 	[SerializeField] private float damageInsecticide = 5f;
+
+	[SerializeField] private HoldButton[] holdButton;
 
 	private Camera _mainCamera;
 	private Ray _ray;
@@ -25,51 +28,54 @@ public class Tools : MonoBehaviour
 	private void Update()
 	{
 		_ray = _mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
-		KillFocus();
+		UseTools();
 	}
 
-	private void FixedUpdate()
+	public void EquipInsecticide() 
 	{
-		SwitchTool();
+		SetActiveTool(0);
+		toolsType = ToolsType.Insecticide;
 	}
 
-	public void SwitchTool() 
+	public void EquipBleach()
 	{
-		if (Input.GetKey(KeyCode.Alpha1)) 
-		{
-			foreach (var item in tool)
-			{
-				item.SetActive(false);
-			}
-			tool[0].SetActive(true);
-			toolsType = ToolsType.Insecticide;
-		}
-		else if (Input.GetKey(KeyCode.Alpha2)) 
-		{
-			foreach (var item in tool) 
-			{ 
-				item.SetActive(false); 
-			}
-			tool[1].SetActive(true);
-			toolsType = ToolsType.Bleach;
-		}
+		SetActiveTool(1);
+		toolsType = ToolsType.Bleach;
 	}
 
-	public void KillFocus()
+	private void SetActiveTool(int index)
+	{
+		foreach (var item in tool)
+		{
+			item.SetActive(false);
+		}
+
+		tool[index].SetActive(true);
+	}
+
+	private void UseTools()
 	{	
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
+		foreach (var item in holdButton) 
+		{
+			if (!item.IsPressed)
+			break;
 
-		if(Input.GetMouseButton(0) && toolsType == ToolsType.Insecticide) 
-		{	
-			if (_hitInfo.collider != null)
+			if(toolsType == ToolsType.Insecticide) 
 			{
-				if (_hitInfo.collider.TryGetComponent(out Larva larva))
+				if (_hitInfo.collider != null)
 				{
-					larva.TakeDamage(damageInsecticide);
+					if (_hitInfo.collider.TryGetComponent(out Larva larva))
+					{
+						larva.TakeDamage(damageInsecticide);
+					}
 				}
+			}
+			
+			if(toolsType == ToolsType.Bleach) 
+			{
+
 			}
 		}
 	}
-
-
 }

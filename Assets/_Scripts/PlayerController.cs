@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
 		_impulseSource = virtualCamera.GetComponent<CinemachineImpulseSource>();
-		Cursor.lockState = CursorLockMode.Locked;
 	}
 
 	private void Update()
