@@ -78,8 +78,12 @@ public class PlayerController : MonoBehaviour
 
 	private void Move() 
 	{
-		//_inputVector = inputController.GetMovementVector2NormalizedJoystick();
+#if UNITY_ANDROID && !UNITY_EDITOR
+		_inputVector = inputController.GetMovementVector2NormalizedJoystick();
+#endif
+#if UNITY_EDITOR
 		_inputVector = inputController.GetMovementVector2NormalizedKeyboard();
+#endif
 
 		Vector3 moveDir = new Vector3(_inputVector.x, 0, _inputVector.y);
 
