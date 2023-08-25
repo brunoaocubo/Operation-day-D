@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.F)) 
 		{
-			InteractWithObject();
+			CheckHouseID();
 		}
 
 		/*
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 		_rigidbody.MovePosition(_rigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);	
 	}
 
-	public void InteractWithObject() 
+	public void CheckHouseID() 
 	{
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
 
@@ -106,18 +106,6 @@ public class PlayerController : MonoBehaviour
 				houseIdentity?.PlaySceneHouse(houseID);
 			}
 		}
-	}
-
-	private void OnTriggerEnter(Collider other)
-	{
-		/*
-		if(other.gameObject.layer == Constants.LAYER_HOUSE) 
-		{
-			if(other.TryGetComponent(out HouseIdentity houseIdentity)) 
-			{
-				int houseID = houseIdentity.Id;
-			}
-		}*/
 	}
 
 	private void OnCollisionStay(Collision collision)
