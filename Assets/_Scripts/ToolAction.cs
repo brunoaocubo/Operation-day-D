@@ -1,27 +1,40 @@
-using UnityEditor.PackageManager;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ToolAction : MonoBehaviour 
 {
-	[SerializeField] private ToolType toolsType;
-	[SerializeField] private GameObject[] tools;
+	[SerializeField] private CinemachineVirtualCamera virtualCamera;
+
 	[SerializeField] private float distanceRay = 1f;
 	[SerializeField] private float damageInsecticide = 5f;
+	[SerializeField] private ToolType toolsType;
+	[SerializeField] private GameObject[] tools;
 	[SerializeField] private HoldButton[] holdButton;
 	[SerializeField] private GameObject[] toolButton;
+
+	private CinemachineImpulseSource _impulseSource;
 	private Camera _mainCamera;
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 
-
+	private bool hideButtonsTutorial = false;
 	private void Start()
 	{
+		_impulseSource = virtualCamera.GetComponent<CinemachineImpulseSource>();
 		_mainCamera = Camera.main;
 
 		foreach (var item in tools)
 		{
 			item.SetActive(false);
+		}
+
+		if(hideButtonsTutorial == false) 
+		{
+			foreach (var item in toolButton)
+			{
+				item.gameObject.SetActive(false);
+			}
 		}
 	}
 
@@ -29,6 +42,7 @@ public class ToolAction : MonoBehaviour
 	{
 		_ray = _mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
+
 		UseTools();
 	}
 
@@ -61,34 +75,25 @@ public class ToolAction : MonoBehaviour
 			if (!item.IsPressed)
 			break;
 
-			if(toolsType == ToolType.Insecticide) 
+			switch (toolsType)
 			{
-				if (_hitInfo.collider != null)
-				{
-					if (_hitInfo.collider.TryGetComponent(out Larva larva))
+				case ToolType.Insecticide:
+					if (_hitInfo.collider != null)
 					{
-						larva.TakeDamage(damageInsecticide);
+						if (_hitInfo.collider.TryGetComponent(out Larva larva))
+						{
+							larva.TakeDamage(damageInsecticide);
+							_impulseSource.GenerateImpulse();
+						}
 					}
-				}
-			}
-			
-			if(toolsType == ToolType.Bleach) 
-			{
+					break;
 
+				case ToolType.Bleach:
+
+					break;
 			}
 		}
 	}
-	/*
-	public void PerformRaycast(System.Type type) 
-	{
-		if (_hitInfo.collider != null)
-		{
-			if (_hitInfo.collider.TryGetComponent(out type))
-			{
-				larva.TakeDamage(damageInsecticide);
-			}
-		}
-	}*/
 
 	public void InteractObj() 
 	{
@@ -96,18 +101,18 @@ public class ToolAction : MonoBehaviour
 		{
 			if (_hitInfo.collider.TryGetComponent(out Tool tool))
 			{
-				if (tool.toolsType == ToolType.Insecticide)
+				switch (tool.toolsType)
 				{
-					toolButton[0].gameObject.SetActive(true);
-					Debug.Log("Desgraça");
-				}
-				if (tool.toolsType == ToolType.Bleach)
-				{
-					toolButton[1].gameObject.SetActive(true);
-					Debug.Log("Cu");
+					case ToolType.Insecticide:
+						toolButton[0].gameObject.SetActive(true);
+						break;
 
+					case ToolType.Bleach:
+						toolButton[1].gameObject.SetActive(true);
+						break;
 				}
 			}
+			hideButtonsTutorial = true;
 		}
 	}
 }

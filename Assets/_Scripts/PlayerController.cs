@@ -5,34 +5,37 @@ using GlobalConstants;
 public class PlayerController : MonoBehaviour
 {
 	[SerializeField] private Inputs inputController;
-	[SerializeField] private CinemachineVirtualCamera virtualCamera;
+	[SerializeField] private GameObject virtualCamera;
 
 	[Header("Config Player")]
 	[SerializeField] private GameObject gun;
 	[SerializeField] private float moveSpeed;
 	[SerializeField] private float rotationSpeed;
-	[SerializeField] private float jumpForce;
 	[SerializeField] private float distanceRay = 1f;
 
-	private CinemachineImpulseSource _impulseSource;
+	[SerializeField] private float rotationSpeedCamera = 5.0f;
+	[SerializeField] private float minVerticalAngle =  -80f;
+	[SerializeField] private float maxVerticalAngle = 80f;
+
+	private Vector2 targetCameraRotation;
+	private float rotationSmoothness = 10f;
 	private Rigidbody _rigidbody;
 	private Vector2 _inputVector;
+	private Vector2 touchStartPos;
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
 	private string interactTagCompare = "Interactable";
 
+
 	private void Start()
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
-		_impulseSource = virtualCamera.GetComponent<CinemachineImpulseSource>();
 	}
 
 	private void Update()
 	{
-		float cameraYaw = Camera.main.transform.eulerAngles.y;
-		transform.rotation = Quaternion.Euler(0f, cameraYaw, 0f);
-		gun.transform.rotation = Camera.main.transform.rotation;
+		RotateCamera();
 
 		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay);
@@ -41,6 +44,7 @@ public class PlayerController : MonoBehaviour
 		{
 			CheckHouseID();
 		}
+		virtualCamera.transform.rotation = Quaternion.Slerp(virtualCamera.transform.rotation, Quaternion.Euler(targetCameraRotation), rotationSmoothness * Time.deltaTime);
 
 		/*
 		if (Input.GetMouseButtonDown(0)) 
@@ -61,29 +65,49 @@ public class PlayerController : MonoBehaviour
 	private void FixedUpdate()
 	{
 		Move();
+		float cameraYaw = virtualCamera.transform.eulerAngles.y;
+		transform.rotation = Quaternion.Euler(0f, cameraYaw, 0f);
+		gun.transform.rotation = virtualCamera.transform.rotation;
 	}
 
-	public void JumpAction() 
+	private void RotateCamera()
 	{
-		if(Input.GetKey(KeyCode.Space)) 
+		if (Input.touchCount > 0)
 		{
-			if (_isGrounded)
+			foreach(Touch touch in Input.touches)
 			{
-				_isGrounded = false;
-				Vector3 jumpDirection = new Vector3(0, 1 * jumpForce, 0);
-				_rigidbody.AddForce(jumpDirection, ForceMode.Impulse);
+				if (touch.phase == TouchPhase.Began)
+				{
+					if (touch.position.x > Screen.width * 0.5f)
+					{
+						touchStartPos = touch.position;
+					}
+				}
+
+				if (touch.phase == TouchPhase.Moved)
+				{
+					if (touch.position.x > Screen.width * 0.25f)
+					{
+						Vector2 touchDelta = touch.position - touchStartPos;
+						float rotationAmountX = touchDelta.x * rotationSpeedCamera * Time.deltaTime;
+						float rotationAmountY = touchDelta.y * rotationSpeedCamera * Time.deltaTime;
+
+						targetCameraRotation.y += rotationAmountX;
+						targetCameraRotation.x -= rotationAmountY;
+						targetCameraRotation.x = Mathf.Clamp(targetCameraRotation.x, minVerticalAngle, maxVerticalAngle);
+
+						touchStartPos = touch.position;
+					}
+				}
 			}
 		}
 	}
 
 	private void Move() 
 	{
-#if UNITY_ANDROID && !UNITY_EDITOR
 		_inputVector = inputController.GetMovementVector2NormalizedJoystick();
-#endif
-#if UNITY_EDITOR
-		_inputVector = inputController.GetMovementVector2NormalizedKeyboard();
-#endif
+		//_inputVector = inputController.GetMovementVector2NormalizedKeyboard();
+
 
 		Vector3 moveDir = new Vector3(_inputVector.x, 0, _inputVector.y);
 
