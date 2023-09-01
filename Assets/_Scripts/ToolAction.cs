@@ -1,11 +1,13 @@
 using Cinemachine;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.VFX;
 
 public class ToolAction : MonoBehaviour 
 {
 	[SerializeField] private CinemachineVirtualCamera virtualCamera;
-
+	[SerializeField] private VisualEffect sprayEffect;
 	[SerializeField] private float distanceRay = 1f;
 	[SerializeField] private float damageInsecticide = 5f;
 	[SerializeField] private ToolType toolsType;
@@ -44,6 +46,16 @@ public class ToolAction : MonoBehaviour
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
 
 		UseTools();
+
+		if (holdButton[0].IsPressed && toolsType == ToolType.Insecticide) 
+		{
+			sprayEffect.SetFloat("SprayRate", 32);
+		}
+		else 
+		{
+			sprayEffect.SetFloat("SprayRate", 0);
+		}
+		
 	}
 
 	public void EquipInsecticide() 
@@ -72,30 +84,26 @@ public class ToolAction : MonoBehaviour
 	{
 		foreach (var item in holdButton) 
 		{
-			if (!item.IsPressed)
-			break;
-
-			switch (toolsType)
+			if (item.IsPressed) 
 			{
-				case ToolType.Insecticide:
-					if (_hitInfo.collider != null)
-					{
-						if (_hitInfo.collider.TryGetComponent(out Larva larva))
+				switch (toolsType)
+				{
+					case ToolType.Insecticide:
+						if (_hitInfo.collider != null)
 						{
-							larva.TakeDamage(damageInsecticide);
-							_impulseSource.GenerateImpulse();
+							if (_hitInfo.collider.TryGetComponent(out Larva larva))
+							{
+								larva.TakeDamage(damageInsecticide);
+								_impulseSource.GenerateImpulse();
+							}
 						}
-					}
 					break;
-
-				case ToolType.Bleach:
-
-					break;
+				}
 			}
 		}
 	}
 
-	public void InteractObj() 
+	public void TutorialGetTool() 
 	{
 		if(_hitInfo.collider != null) 
 		{
