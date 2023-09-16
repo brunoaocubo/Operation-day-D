@@ -1,6 +1,4 @@
-﻿using Cinemachine;
-using UnityEngine;
-using GlobalConstants;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,60 +12,45 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float distanceRay = 1f;
 
 	[SerializeField] private float rotationSpeedCamera = 5.0f;
+	[SerializeField] private float rotationSmoothness = 10f;
 	[SerializeField] private float minVerticalAngle =  -80f;
 	[SerializeField] private float maxVerticalAngle = 80f;
 
 	private Vector2 targetCameraRotation;
-	private float rotationSmoothness = 10f;
+	//private Vector3 cameraRotationVelocity;
 	private Rigidbody _rigidbody;
 	private Vector2 _inputVector;
 	private Vector2 touchStartPos;
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
-	private string interactTagCompare = "Interactable";
-
 
 	private void Start()
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
+		targetCameraRotation = Camera.main.transform.rotation.eulerAngles;
 	}
 
 	private void Update()
 	{
-		RotateCamera();
-
 		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay);
+
+		RotateCamera();
+		Camera.main.transform.rotation = Quaternion.Slerp(Camera.main.transform.rotation, Quaternion.Euler(targetCameraRotation), rotationSmoothness * Time.deltaTime);
 
 		if (Input.GetKey(KeyCode.F)) 
 		{
 			CheckHouseID();
 		}
-		virtualCamera.transform.rotation = Quaternion.Slerp(virtualCamera.transform.rotation, Quaternion.Euler(targetCameraRotation), rotationSmoothness * Time.deltaTime);
-
-		/*
-		if (Input.GetMouseButtonDown(0)) 
-		{
-			IParticleConfig config = GetComponentInChildren<IParticleConfig>();
-			config.StartParticle();
-			_impulseSource.GenerateImpulse();
-			gun.transform.localPosition = new Vector3(gun.transform.localPosition.x, gun.transform.localPosition.y, 0.55f);
-		}
-		else if (Input.GetMouseButtonUp(0)) 
-		{
-			IParticleConfig config = GetComponentInChildren<IParticleConfig>();
-			config.StopParticle();
-			gun.transform.localPosition = new Vector3(gun.transform.localPosition.x, gun.transform.localPosition.y, 0.612f);
-		}*/
 	}
 
 	private void FixedUpdate()
 	{
 		Move();
-		float cameraYaw = virtualCamera.transform.eulerAngles.y;
+		float cameraYaw = Camera.main.transform.eulerAngles.y;
 		transform.rotation = Quaternion.Euler(0f, cameraYaw, 0f);
-		gun.transform.rotation = virtualCamera.transform.rotation;
+		//gun.transform.forward = Camera.main.transform.forward;
 	}
 
 	private void RotateCamera()
@@ -92,6 +75,10 @@ public class PlayerController : MonoBehaviour
 						float rotationAmountX = touchDelta.x * rotationSpeedCamera * Time.deltaTime;
 						float rotationAmountY = touchDelta.y * rotationSpeedCamera * Time.deltaTime;
 
+						//Camera.main.transform.Rotate(Vector3.up, rotationAmountX, Space.World);
+						//Camera.main.transform.Rotate(Vector3.left, rotationAmountY, Space.Self);
+
+						touchStartPos = touch.position;
 						targetCameraRotation.y += rotationAmountX;
 						targetCameraRotation.x -= rotationAmountY;
 						targetCameraRotation.x = Mathf.Clamp(targetCameraRotation.x, minVerticalAngle, maxVerticalAngle);

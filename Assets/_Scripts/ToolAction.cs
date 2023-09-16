@@ -60,6 +60,7 @@ public class ToolAction : MonoBehaviour
 
 	public void EquipInsecticide() 
 	{
+		
 		SetActiveTool(0);
 		toolsType = ToolType.Insecticide;
 	}
@@ -77,7 +78,10 @@ public class ToolAction : MonoBehaviour
 			item.SetActive(false);
 		}
 
-		tools[index].SetActive(true);
+		if (!tools[index].activeInHierarchy)
+			tools[index].SetActive(true);
+		else 
+			tools[index].SetActive(false);
 	}
 
 	private void UseTools()
