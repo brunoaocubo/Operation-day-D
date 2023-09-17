@@ -6,6 +6,8 @@ using UnityEngine.VFX;
 
 public class ToolAction : MonoBehaviour 
 {
+	public BoxCollider sprayBox;
+
 	[SerializeField] private CinemachineVirtualCamera virtualCamera;
 	[SerializeField] private VisualEffect sprayEffect;
 	[SerializeField] private float distanceRay = 1f;
@@ -44,8 +46,9 @@ public class ToolAction : MonoBehaviour
 	{
 		_ray = _mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
+		//Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 
-		UseTools();
+		//UseTools();
 
 		if (holdButton[0].IsPressed && toolsType == ToolType.Insecticide) 
 		{
@@ -97,8 +100,9 @@ public class ToolAction : MonoBehaviour
 						{
 							if (_hitInfo.collider.TryGetComponent(out Larva larva))
 							{
+								Debug.Log("Hit Larva");
 								larva.TakeDamage(damageInsecticide);
-								_impulseSource.GenerateImpulse();
+								//_impulseSource.GenerateImpulse();
 							}
 						}
 					break;

@@ -5,23 +5,23 @@ using TMPro;
 
 public class QuestsController : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI[] quests = new TextMeshProUGUI[5];
-    [SerializeField] private bool[] testando = new bool[5];
+    [SerializeField] private TextMeshProUGUI[] quests_txt = new TextMeshProUGUI[5];
+    [SerializeField] private bool[] checkList = new bool[5];
 
     public void VerificarMissoes()
     {
-        for (int i = 0; i < quests.Length; i++)
+        for (int i = 0; i < quests_txt.Length; i++)
         {
-            if(testando[i])
+            if(checkList[i])
             {
-                quests[i].fontStyle = FontStyles.Strikethrough;
-                quests[i].color = Color.red;
+                quests_txt[i].fontStyle = FontStyles.Strikethrough;
+                quests_txt[i].color = Color.red;
 
             }
             else
             {
-                quests[i].fontStyle = FontStyles.Normal;
-                quests[i].color = Color.black;
+                quests_txt[i].fontStyle = FontStyles.Normal;
+                quests_txt[i].color = Color.black;
             }
             
         }

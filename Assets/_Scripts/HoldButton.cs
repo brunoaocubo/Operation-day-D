@@ -17,13 +17,4 @@ public class HoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 	{
 		isPressed = false;
 	}
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(isPressed) 
-		{
-			
-		}
-    }
 }
