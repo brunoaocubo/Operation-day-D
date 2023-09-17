@@ -57,6 +57,6 @@ Material:
     - _RippleSlimness: 8
     - _RippleSpeed: 2
     m_Colors:
-    - _BaseColor: {r: 0.023584902, g: 0.7481074, b: 1, a: 0}
+    - _BaseColor: {r: 0.16592327, g: 1, b: 0.02352941, a: 0}
     - _RippleColor: {r: 0.4386792, g: 0.8144639, b: 1, a: 0}
   m_BuildTextureStacks: []

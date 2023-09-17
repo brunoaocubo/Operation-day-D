@@ -6,7 +6,6 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Config Player")]
 	[SerializeField] private float moveSpeed;
-	[SerializeField] private float rotationSpeed;
 	[SerializeField] private float distanceRay = 1f;
 
 	private Rigidbody _rigidbody;
@@ -24,7 +23,6 @@ public class PlayerController : MonoBehaviour
 	{
 		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 
-
 		if (Input.GetKey(KeyCode.F)) 
 		{
 			CheckHouseID();
@@ -39,15 +37,15 @@ public class PlayerController : MonoBehaviour
 	private void Move() 
 	{
 		_inputVector = inputController.GetMovementVector2NormalizedJoystick();
-		//_inputVector = inputController.GetMovementVector2NormalizedKeyboard();
-
 		Vector3 moveDir = new Vector3(_inputVector.x, 0, _inputVector.y);
 
 		Vector3 cameraForward = Camera.main.transform.forward;
 		cameraForward.y = 0;
 
 		Vector3 movement = (moveDir.x * Camera.main.transform.right + moveDir.z * cameraForward).normalized;
-		_rigidbody.MovePosition(_rigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);	
+		_rigidbody.position += movement * moveSpeed * Time.deltaTime;
+
+		//_rigidbody.MovePosition(_rigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);	
 	}
 
 	public void CheckHouseID() 

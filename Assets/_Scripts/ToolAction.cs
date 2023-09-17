@@ -6,18 +6,17 @@ using UnityEngine.VFX;
 
 public class ToolAction : MonoBehaviour 
 {
-	public BoxCollider sprayBox;
-
-	[SerializeField] private CinemachineVirtualCamera virtualCamera;
-	[SerializeField] private VisualEffect sprayEffect;
-	[SerializeField] private float distanceRay = 1f;
-	[SerializeField] private float damageInsecticide = 5f;
+	[SerializeField] private Material waterClean_mat;
 	[SerializeField] private ToolType toolsType;
+	[SerializeField] private BoxCollider insecticideDamageBox;
+	//[SerializeField] private CinemachineVirtualCamera virtualCamera;
+	[SerializeField] private VisualEffect sprayEffect;
 	[SerializeField] private GameObject[] tools;
-	[SerializeField] private HoldButton[] holdButton;
 	[SerializeField] private GameObject[] toolButton;
+	[SerializeField] private HoldButton[] holdButton;
+	[SerializeField] private float distanceRay = 1f;
 
-	private CinemachineImpulseSource _impulseSource;
+	//private CinemachineImpulseSource _impulseSource;
 	private Camera _mainCamera;
 	private Ray _ray;
 	private RaycastHit _hitInfo;
@@ -25,7 +24,7 @@ public class ToolAction : MonoBehaviour
 	private bool hideButtonsTutorial = false;
 	private void Start()
 	{
-		_impulseSource = virtualCamera.GetComponent<CinemachineImpulseSource>();
+		//_impulseSource = virtualCamera.GetComponent<CinemachineImpulseSource>();
 		_mainCamera = Camera.main;
 
 		foreach (var item in tools)
@@ -46,10 +45,10 @@ public class ToolAction : MonoBehaviour
 	{
 		_ray = _mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
-		//Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
+		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 
-		//UseTools();
-
+		ActionTool();
+		
 		if (holdButton[0].IsPressed && toolsType == ToolType.Insecticide) 
 		{
 			sprayEffect.SetFloat("SprayRate", 32);
@@ -63,7 +62,6 @@ public class ToolAction : MonoBehaviour
 
 	public void EquipInsecticide() 
 	{
-		
 		SetActiveTool(0);
 		toolsType = ToolType.Insecticide;
 	}
@@ -72,6 +70,39 @@ public class ToolAction : MonoBehaviour
 	{
 		SetActiveTool(1);
 		toolsType = ToolType.Bleach;
+	}
+
+	private void ActionTool()
+	{
+		foreach (var item in holdButton) 
+		{
+			if (item.IsPressed) 
+			{
+				switch (toolsType)
+				{
+					case ToolType.Insecticide:
+						if (!insecticideDamageBox.enabled) 
+						{
+							insecticideDamageBox.enabled = true;
+						}
+					break;
+					case ToolType.Bleach:
+						if(_hitInfo.collider.gameObject != null) 
+						{
+							if(_hitInfo.collider.gameObject.layer == 11) 
+							{
+								GetComponent<MeshRenderer>().material = waterClean_mat;
+							}
+
+						}
+					break;
+				}
+			}
+			else 
+			{
+				insecticideDamageBox.enabled = false;
+			}
+		}
 	}
 
 	private void SetActiveTool(int index)
@@ -83,35 +114,11 @@ public class ToolAction : MonoBehaviour
 
 		if (!tools[index].activeInHierarchy)
 			tools[index].SetActive(true);
-		else 
+		else
 			tools[index].SetActive(false);
 	}
 
-	private void UseTools()
-	{
-		foreach (var item in holdButton) 
-		{
-			if (item.IsPressed) 
-			{
-				switch (toolsType)
-				{
-					case ToolType.Insecticide:
-						if (_hitInfo.collider != null)
-						{
-							if (_hitInfo.collider.TryGetComponent(out Larva larva))
-							{
-								Debug.Log("Hit Larva");
-								larva.TakeDamage(damageInsecticide);
-								//_impulseSource.GenerateImpulse();
-							}
-						}
-					break;
-				}
-			}
-		}
-	}
-
-	public void TutorialGetTool() 
+	public void Tutorial_EquipTool() 
 	{
 		if(_hitInfo.collider != null) 
 		{
