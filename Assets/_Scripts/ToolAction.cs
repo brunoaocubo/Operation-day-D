@@ -47,7 +47,7 @@ public class ToolAction : MonoBehaviour
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
 		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 
-		ActionTool();
+		Action();
 		
 		if (holdButton[0].IsPressed && toolsType == ToolType.Insecticide) 
 		{
@@ -72,7 +72,7 @@ public class ToolAction : MonoBehaviour
 		toolsType = ToolType.Bleach;
 	}
 
-	private void ActionTool()
+	private void Action()
 	{
 		foreach (var item in holdButton) 
 		{
@@ -87,11 +87,11 @@ public class ToolAction : MonoBehaviour
 						}
 					break;
 					case ToolType.Bleach:
-						if(_hitInfo.collider.gameObject != null) 
+						if(_hitInfo.collider != null) 
 						{
 							if(_hitInfo.collider.gameObject.layer == 11) 
 							{
-								GetComponent<MeshRenderer>().material = waterClean_mat;
+								_hitInfo.collider.GetComponent<Renderer>().material = new Material (waterClean_mat);
 							}
 
 						}

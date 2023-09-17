@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Waterpool
+  m_Name: Waterpool_toxic
   m_Shader: {fileID: -6465566751694194690, guid: 2d746f2659d937e479577cad5a8028ef,
     type: 3}
   m_Parent: {fileID: 0}
