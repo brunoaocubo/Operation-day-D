@@ -16,6 +16,10 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] private HoldButton[] holdButton;
 	[SerializeField] private float distanceRay = 1f;
 
+	[Header("Quests")]
+	[SerializeField] private int idQuest;
+	[SerializeField] private QuestsController questsController;
+
 	//private CinemachineImpulseSource _impulseSource;
 	private Camera _mainCamera;
 	private Ray _ray;
@@ -92,6 +96,7 @@ public class ToolAction : MonoBehaviour
 							if(_hitInfo.collider.gameObject.layer == 11) 
 							{
 								_hitInfo.collider.GetComponent<Renderer>().material = new Material (waterClean_mat);
+								questsController.VerificarMissoes(idQuest, 1);
 							}
 
 						}
@@ -128,12 +133,12 @@ public class ToolAction : MonoBehaviour
 				{
 					case ToolType.Insecticide:
 						toolButton[0].gameObject.SetActive(true);
-						FindAnyObjectByType<QuestsController>().VerificarMissoes(0, 1);
+						questsController.VerificarMissoes(0, 1);
 						break;
 
 					case ToolType.Bleach:
 						toolButton[1].gameObject.SetActive(true);
-						FindAnyObjectByType<QuestsController>().VerificarMissoes(1, 1);
+						questsController.VerificarMissoes(1, 1);
 						break;
 				}
 			}

@@ -5,17 +5,7 @@ using UnityEngine;
 public class Larva : MonoBehaviour
 {
     [SerializeField] private float health = 100f;
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    [SerializeField] private int questID;
 
     public void TakeDamage(float damage) 
     {
@@ -32,7 +22,8 @@ public class Larva : MonoBehaviour
     }
 
     private void DestroyLarva() 
-    {    
+    {
+        FindAnyObjectByType<QuestsController>().VerificarMissoes(2, 1);
         Destroy(gameObject);
     }
 }
