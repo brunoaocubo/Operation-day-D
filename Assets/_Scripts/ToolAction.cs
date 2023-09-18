@@ -128,10 +128,12 @@ public class ToolAction : MonoBehaviour
 				{
 					case ToolType.Insecticide:
 						toolButton[0].gameObject.SetActive(true);
+						FindAnyObjectByType<QuestsController>().VerificarMissoes(0, 1);
 						break;
 
 					case ToolType.Bleach:
 						toolButton[1].gameObject.SetActive(true);
+						FindAnyObjectByType<QuestsController>().VerificarMissoes(1, 1);
 						break;
 				}
 			}
