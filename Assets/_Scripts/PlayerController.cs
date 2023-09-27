@@ -23,15 +23,12 @@ public class PlayerController : MonoBehaviour
 	{
 		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 
-		if (Input.GetKey(KeyCode.F)) 
-		{
-			CheckHouseID();
-		}
+		Move();
+		CheckHouseID();
 	}
 
 	private void FixedUpdate()
 	{
-		Move();
 	}
 
 	private void Move() 
@@ -50,14 +47,17 @@ public class PlayerController : MonoBehaviour
 
 	public void CheckHouseID() 
 	{
-		Physics.Raycast(_ray, out _hitInfo, distanceRay);
-
-		if (_hitInfo.collider != null) 
+		if (Input.GetKey(KeyCode.F))
 		{
-			if (_hitInfo.collider.TryGetComponent(out HouseIdentity houseIdentity))
+			Physics.Raycast(_ray, out _hitInfo, distanceRay);
+
+			if (_hitInfo.collider != null)
 			{
-				int houseID = houseIdentity.Id;
-				houseIdentity?.PlaySceneHouse(houseID);
+				if (_hitInfo.collider.TryGetComponent(out HouseIdentity houseIdentity))
+				{
+					int houseID = houseIdentity.Id;
+					houseIdentity?.PlaySceneHouse(houseID);
+				}
 			}
 		}
 	}
