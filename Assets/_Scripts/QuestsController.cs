@@ -16,12 +16,12 @@ public class QuestsController : MonoBehaviour
 
     private void Start()
     {
-        quests_txt = new TextMeshProUGUI[quests.Length];
+        //quests_txt = new TextMeshProUGUI[quests.Length];
 
         for(int i=0; i<quests.Length; i++)
         {
-            CreateTextSlot(i);
-            quests_txt[i] = textSlot.GetComponent<TextMeshProUGUI>();
+            //CreateTextSlot(i);
+            //quests_txt[i] = textSlot.GetComponent<TextMeshProUGUI>();
 
             quests_txt[i].text = quests[i].questText;
             Debug.Log(quests[i].questText);

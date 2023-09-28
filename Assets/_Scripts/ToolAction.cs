@@ -95,6 +95,7 @@ public class ToolAction : MonoBehaviour
 						{
 							if(_hitInfo.collider.gameObject.layer == 11) 
 							{
+								_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
 								_hitInfo.collider.GetComponent<Renderer>().material = new Material (waterClean_mat);
 								questsController.VerificarMissoes(idQuest, 1);
 							}
