@@ -1,49 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Level Level;
-	[SerializeField] private float timerCount;
-    [SerializeField] private TextMeshProUGUI timerCount_txt;
-	public bool _finishStage = false;
+	public static GameManager instance;
 
-    void Update()
-    {
-		if(Level == Level.tutorial) 
+	public bool tutorialComplete = false;
+
+	private void Awake()
+	{
+		if(instance == null) 
 		{
-			PlayStage();
-		}
-    }
-
-    void PlayStage() 
-    {
-        if (timerCount > 0) 
-        {
-			timerCount -= Time.deltaTime;
-			DisplayTime(timerCount);
-
-			if (_finishStage) 
-			{
-				timerCount_txt.text = "Tutorial concluído com sucesso!";
-			}
+			instance = this;
+			DontDestroyOnLoad(gameObject);
 		}
 		else
 		{
-			timerCount = 0;
-			_finishStage = true;
-			timerCount_txt.text = "Não concluiu a tempo, tente novamente!";
+			Destroy(gameObject);
 		}
 	}
 
-	void DisplayTime(float timeToDisplay)
+	public void LoadScene(int sceneId) 
 	{
-		timeToDisplay += 1;
-		float minutes = Mathf.FloorToInt(timeToDisplay / 60);
-		float seconds = Mathf.FloorToInt(timeToDisplay % 60);
-		timerCount_txt.gameObject.SetActive(true);
-		timerCount_txt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+		SceneManager.LoadSceneAsync(sceneId);
 	}
+	
+
+	void Update()
+    {
+
+    }
+
+    
 }

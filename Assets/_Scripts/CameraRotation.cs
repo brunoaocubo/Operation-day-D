@@ -9,7 +9,10 @@ public class CameraRotation : MonoBehaviour
 	[SerializeField] private Vector2 verticalAngle;
 	[SerializeField] private Vector2 horizontalAngle;
 
+
 	private float rotationX, rotationY;
+	private bool isRotationInitialized = false;
+
 
 	private void Update()
 	{
@@ -33,6 +36,12 @@ public class CameraRotation : MonoBehaviour
 
 				touchDeltaPosX *= rotationSensitivity;
 				touchDeltaPosY *= rotationSensitivity;
+
+				if (!isRotationInitialized)
+				{
+					rotationX = transform.localRotation.eulerAngles.y; //Usar o valor atual da rotação Y como valor atual.
+					isRotationInitialized = true; 
+				}
 
 				rotationX += touchDeltaPosX * rotationSpeed * Time.deltaTime;
 				rotationX = Mathf.Clamp(rotationX, horizontalAngle.x, horizontalAngle.y);

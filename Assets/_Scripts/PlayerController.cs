@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
+	private bool _stopMove = false;
 
 	private void Start()
 	{
@@ -23,8 +24,21 @@ public class PlayerController : MonoBehaviour
 	{
 		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 
-		Move();
+		if (_stopMove == false) 
+		{
+			Move();
+		}
 		CheckHouseID();
+	}
+
+	private void OnEnable()
+	{
+		_stopMove = false;
+	}
+
+	private void OnDisable()
+	{
+		_stopMove = true;	
 	}
 
 	private void FixedUpdate()
