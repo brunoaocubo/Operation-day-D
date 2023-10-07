@@ -42,7 +42,7 @@ public class Inputs : MonoBehaviour
 	public Vector2 GetMovementVector2NormalizedJoystick()
 	{
 		Vector2 inputVector = new Vector2(leftJoystick.Direction.x, leftJoystick.Direction.y);
-		return inputVector.normalized;
+		return inputVector;
 	}
 
 }

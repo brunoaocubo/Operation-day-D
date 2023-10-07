@@ -9,9 +9,9 @@ public class Tutorial : MonoBehaviour
 {
 	[SerializeField] private GameManager GameManager;
 	[SerializeField] private PlayableDirector CutsceneTutorial;
-
 	[SerializeField] private float timerCount;
 	[SerializeField] private TextMeshProUGUI timerCount_txt;
+	[SerializeField] private Transform spawnHouse;
 	private bool _startTutorial = false;
 	private bool _finishTutorial = false;
 
@@ -22,7 +22,9 @@ public class Tutorial : MonoBehaviour
 			CutsceneTutorial.gameObject.SetActive(true);
 			CutsceneTutorial.Play();
 			StartCoroutine(WaitCutscene());
-			other.gameObject.transform.localRotation = Quaternion.Euler(0f, 90f, 0f);
+			other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
+			other.gameObject.transform.position = spawnHouse.position;
+			gameObject.GetComponent<Collider>().enabled = false;
 		}
 	}
 

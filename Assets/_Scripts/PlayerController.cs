@@ -13,7 +13,8 @@ public class PlayerController : MonoBehaviour
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
-	private bool _stopMove = false;
+	public bool DESGRAÇADEPLATAFORMAFDPPPPPPPPPPPPPPPPPPPPPPP = false;
+	[SerializeField] private RectTransform handleJoystick;
 
 	private void Start()
 	{
@@ -24,30 +25,26 @@ public class PlayerController : MonoBehaviour
 	{
 		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 
-		if (_stopMove == false) 
+		if(handleJoystick.transform.localPosition.magnitude <1) 
 		{
-			Move();
+			_inputVector = Vector2.zero;
 		}
-		CheckHouseID();
-	}
+		else 
+		{
+			_inputVector = inputController.GetMovementVector2NormalizedJoystick();
+		}
 
-	private void OnEnable()
-	{
-		_stopMove = false;
+		Move();
+		CheckHouseID();
 	}
 
 	private void OnDisable()
 	{
-		_stopMove = true;	
-	}
-
-	private void FixedUpdate()
-	{
+		handleJoystick.transform.localPosition = new Vector2(0, 0);
 	}
 
 	private void Move() 
 	{
-		_inputVector = inputController.GetMovementVector2NormalizedJoystick();
 		Vector3 moveDir = new Vector3(_inputVector.x, 0, _inputVector.y);
 
 		Vector3 cameraForward = Camera.main.transform.forward;
@@ -55,7 +52,6 @@ public class PlayerController : MonoBehaviour
 
 		Vector3 movement = (moveDir.x * Camera.main.transform.right + moveDir.z * cameraForward).normalized;
 		_rigidbody.position += movement * moveSpeed * Time.deltaTime;
-
 		//_rigidbody.MovePosition(_rigidbody.position + movement * moveSpeed * Time.fixedDeltaTime);	
 	}
 
