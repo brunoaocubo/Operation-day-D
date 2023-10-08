@@ -15,24 +15,39 @@ public class Tutorial : MonoBehaviour
 	[SerializeField] private Transform spawnHouse;
 
 	[SerializeField] private Collider[] _collisionsTutorial;
-
+	public bool collected = false;
 	private bool _startTutorial = false;
 	private bool _finishTutorial = false;
 
 	private void Start()
 	{
-
+		_collisionsTutorial[0].enabled = false;
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if (other.TryGetComponent(out PlayerController playerController))
+		if (collected)
 		{
-			CutsceneTutorial.gameObject.SetActive(true);
-			CutsceneTutorial.Play();
-			StartCoroutine(WaitCutscene());
-			other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
-			other.gameObject.transform.position = spawnHouse.position;
+			if (other.TryGetComponent(out PlayerController playerController))
+			{
+				CutsceneTutorial.gameObject.SetActive(true);
+				CutsceneTutorial.Play();
+				StartCoroutine(WaitCutscene());
+				other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
+				other.gameObject.transform.position = spawnHouse.position;
+				_collisionsTutorial[0].enabled = false;
+			}
+		}
+
+		if (quests.CheckStateQuest(0) && quests.CheckStateQuest(1))
+		{
+			_collisionsTutorial[0].enabled = true;
+			_collisionsTutorial[1].enabled = false;
+			collected = true;
+		}
+		else
+		{
 			_collisionsTutorial[0].enabled = false;
+			Debug.Log("Not yet");
 		}
 	}
 
@@ -43,14 +58,7 @@ public class Tutorial : MonoBehaviour
 			PlayStage();
 		}
 
-		if(quests.CheckStateQuest(0) && quests.CheckStateQuest(1)) 
-		{
-			//_collisionTutorial.enabled = true;
-		}
-		else 
-		{
-			//_collisionTutorial.enabled = false;
-		}
+
 	}
 
 	private IEnumerator WaitCutscene() 

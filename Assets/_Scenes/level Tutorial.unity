@@ -6301,6 +6301,7 @@ GameObject:
   - component: {fileID: 576648305}
   - component: {fileID: 576648306}
   - component: {fileID: 576648304}
+  - component: {fileID: 576648307}
   m_Layer: 0
   m_Name: Level_Tutorial_Place
   m_TagString: Untagged
@@ -6357,11 +6358,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee21ae05a19bb246a69df3d9284fdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  quests: {fileID: 221306137}
   CutsceneTutorial: {fileID: 186561589}
   timerCount: 360
   timerCount_txt: {fileID: 148376425}
   spawnHouse: {fileID: 1580185409}
-  quests: {fileID: 221306137}
+  _collisionsTutorial:
+  - {fileID: 576648304}
+  - {fileID: 576648307}
+--- !u!65 &576648307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576648303}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.9714944, z: 60}
+  m_Center: {x: -7.84, y: 0.48574722, z: 0}
 --- !u!1 &579186400
 GameObject:
   m_ObjectHideFlags: 0

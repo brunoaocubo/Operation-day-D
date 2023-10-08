@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest 1
   m_EditorClassIdentifier: 
   idQuest: 1
-  currentValue: 0
+  currentValue: 2
   amount: 1
   stateQuest: 1
   questText: "Pegue a \xE1gua sanit\xE1ria"
