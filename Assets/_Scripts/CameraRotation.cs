@@ -2,24 +2,22 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
-	[SerializeField] private float rotationSpeed = 5.0f;
+	[SerializeField] [Range(0,10)] private float rotationSpeed = 5.0f;
 	[SerializeField] private float rotationSensitivity = 1.0f;
 
 	[Header("Min/Max Angle")]
 	[SerializeField] private Vector2 verticalAngle;
 	[SerializeField] private Vector2 horizontalAngle;
 
-
 	private float rotationX, rotationY;
 	private bool isRotationInitialized = false;
 
-
 	private void Update()
 	{
-		ScreenRotation();
+		ExecuteRotation();
 	}
 
-	private void ScreenRotation()
+	private void ExecuteRotation()
 	{
 		float touchDeltaPosX = 0;
 		float touchDeltaPosY = 0;

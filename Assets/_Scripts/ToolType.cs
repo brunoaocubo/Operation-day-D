@@ -1,5 +1,7 @@
 ﻿public enum ToolType 
 {
+	None,
 	Insecticide,
-	Bleach
+	Bleach,
+	Shovel
 }

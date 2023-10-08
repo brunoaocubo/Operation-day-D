@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class HouseIdentity : MonoBehaviour 
 {
@@ -12,6 +9,6 @@ public class HouseIdentity : MonoBehaviour
 
 	public void PlaySceneHouse(int houseID) 
 	{
-		SceneManager.LoadScene(houseID);
+		GameManager.instance.LoadScene(houseID);
 	}
 }

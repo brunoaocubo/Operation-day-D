@@ -3,58 +3,65 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class QuestsController : MonoBehaviour
+public class QuestsController : MonoBehaviour, IQuestController
 {
-
     [Header("Config")]
     [SerializeField] private GameObject questSlot;
-    [SerializeField] private TextMeshProUGUI[] quests_txt;
-    //[SerializeField] private bool[] checkList = new bool[5];
-
-    [SerializeField] private Quest[] quests;
-    private GameObject textSlot;
+    [SerializeField] private TextMeshProUGUI[] quest_txt;
+    [SerializeField] private Quest[] questList;
+    
+    //private GameObject textSlot;
 
     private void Start()
     {
-        //quests_txt = new TextMeshProUGUI[quests.Length];
-
-        for(int i=0; i<quests.Length; i++)
+        for(int i=0; i<questList.Length; i++)
         {
-            //CreateTextSlot(i);
-            //quests_txt[i] = textSlot.GetComponent<TextMeshProUGUI>();
-
-            quests_txt[i].text = quests[i].questText;
-            Debug.Log(quests[i].questText);
+            quest_txt[i].text = questList[i].questText;
+            Debug.Log(questList[i].questText);
         }
     }
-    public void VerificarMissoes(int questID, int plus)
+    public void UpdateProgressQuest(int questID, int plus)
     {
         int i = 0;
-        foreach(Quest miss in quests)
+
+        foreach(Quest quest in questList)
         {
-            if(miss.idQuest == questID)
+            if(quest.idQuest == questID)
             {
-                miss.currentValue += plus;
-                if (miss.currentValue >= miss.amount)
+                quest.currentValue += plus;
+                if (quest.currentValue >= quest.amount)
                 {
-                    miss.stateQuest = true;
-                    quests_txt[i].fontStyle = FontStyles.Strikethrough;
-                    quests_txt[i].color = Color.red;
+                    quest.stateQuest = true;
+                    quest_txt[i].fontStyle = FontStyles.Strikethrough;
+                    quest_txt[i].color = Color.red;
                 }
             }
-            Debug.Log(miss.stateQuest);
+            Debug.Log(quest.stateQuest);
             i++;
         }
     }
 
-    private void CreateTextSlot(int idQuest)
+    public bool CheckStateQuest(int questID) 
     {
-        textSlot = new GameObject();
-        TextMeshProUGUI tmp = textSlot.AddComponent<TextMeshProUGUI>();
-        tmp.fontSize = 30;
-        tmp.color = Color.black;
-        textSlot.transform.SetParent(questSlot.transform);
-        textSlot.name = "Quest" + idQuest;
-        textSlot.GetComponent<RectTransform>().sizeDelta = new Vector2(310, 30);
+		bool state = false;
+		foreach (Quest quest in questList) 
+        {
+            if(quest.idQuest == questID)
+            {
+                state = quest.stateQuest;
+			}
+        }
+		return state;
     }
+
+    //private void CreateTextSlot(int idQuest)
+    //{
+    //    textSlot = new GameObject();
+    //    TextMeshProUGUI tmp = textSlot.AddComponent<TextMeshProUGUI>();
+    //    tmp.fontSize = 30;
+    //    tmp.color = Color.black;
+    //    textSlot.transform.SetParent(questSlot.transform);
+    //    textSlot.name = "Quest" + idQuest;
+    //    textSlot.GetComponent<RectTransform>().sizeDelta = new Vector2(310, 30);
+    //}
 }

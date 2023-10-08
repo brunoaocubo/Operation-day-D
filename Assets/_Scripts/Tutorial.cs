@@ -7,14 +7,22 @@ using UnityEngine.Timeline;
 
 public class Tutorial : MonoBehaviour
 {
-	[SerializeField] private GameManager GameManager;
+	[SerializeField] QuestsController quests;
+
 	[SerializeField] private PlayableDirector CutsceneTutorial;
 	[SerializeField] private float timerCount;
 	[SerializeField] private TextMeshProUGUI timerCount_txt;
 	[SerializeField] private Transform spawnHouse;
+
+	[SerializeField] private Collider[] _collisionsTutorial;
+
 	private bool _startTutorial = false;
 	private bool _finishTutorial = false;
 
+	private void Start()
+	{
+
+	}
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.TryGetComponent(out PlayerController playerController))
@@ -24,7 +32,7 @@ public class Tutorial : MonoBehaviour
 			StartCoroutine(WaitCutscene());
 			other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
 			other.gameObject.transform.position = spawnHouse.position;
-			gameObject.GetComponent<Collider>().enabled = false;
+			_collisionsTutorial[0].enabled = false;
 		}
 	}
 
@@ -35,6 +43,14 @@ public class Tutorial : MonoBehaviour
 			PlayStage();
 		}
 
+		if(quests.CheckStateQuest(0) && quests.CheckStateQuest(1)) 
+		{
+			//_collisionTutorial.enabled = true;
+		}
+		else 
+		{
+			//_collisionTutorial.enabled = false;
+		}
 	}
 
 	private IEnumerator WaitCutscene() 
