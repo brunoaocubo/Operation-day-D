@@ -134,6 +134,8 @@ public class ToolAction : MonoBehaviour
 			}
 		}*/
 	}
+
+	//TERMINAR DE CRIAR O SISTEMA
 	public void UseShovel() 
 	{
 		if(toolsType == ToolType.Shovel) 

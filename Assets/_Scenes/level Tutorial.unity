@@ -1117,7 +1117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf695f38cca68b4193c956d2b2d3335, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 579186400}
+  mapUI_img: {fileID: 579186400}
+  questUI_img: {fileID: 609271413}
 --- !u!4 &89461173
 Transform:
   m_ObjectHideFlags: 0
@@ -4567,6 +4568,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7270015692493767943}
+        m_TargetAssemblyTypeName: ToolAction, Assembly-CSharp
+        m_MethodName: UseBleach
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &350706047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6366,6 +6379,7 @@ MonoBehaviour:
   _collisionsTutorial:
   - {fileID: 576648304}
   - {fileID: 576648307}
+  collected: 0
 --- !u!65 &576648307
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9390,10 +9404,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 609271413}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 89461172}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
+        m_MethodName: QuestUIActive
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17485,7 +17499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2010341786
 RectTransform:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System.Collections;
 using TMPro;
-using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;

@@ -15,5 +15,5 @@ MonoBehaviour:
   idQuest: 0
   currentValue: 6
   amount: 1
-  stateQuest: 1
+  stateQuest: 0
   questText: Pegue o inseticida

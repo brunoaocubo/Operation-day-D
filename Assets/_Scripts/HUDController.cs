@@ -5,20 +5,19 @@ using UnityEngine;
 public class HUDController : MonoBehaviour
 {
     private bool openMap = false;
-    [SerializeField] private GameObject map;
+    private bool questUI = false;
+    [SerializeField] private GameObject mapUI_img;
+    [SerializeField] private GameObject questUI_img;
 
-
-
-    public void MapAndProgressBT()
+    public void MapActive()
     {
         openMap = !openMap;
-        if(openMap)
-        {
-            map.SetActive(true);
-        }
-        else
-        {
-            map.SetActive(false);
-        }
+        mapUI_img.SetActive(openMap);
     }
+    public void QuestUIActive()
+    {
+        questUI = !questUI;
+        questUI_img.SetActive(questUI);
+    }
+
 }
