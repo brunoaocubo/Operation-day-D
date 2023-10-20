@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
 
+	private Vector3 movement, camaraFoward, moveDir;
+
 	private void Start()
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
@@ -23,7 +25,7 @@ public class PlayerController : MonoBehaviour
 	private void Update()
 	{
 
-		Move();
+		//Move();
 		if(handleJoystick.transform.localPosition.magnitude <1) 
 		{
 			_inputVector = Vector2.zero;
@@ -34,7 +36,12 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 
-	private void OnDisable()
+    private void FixedUpdate()
+    {
+		Move();
+	}
+
+    private void OnDisable()
 	{
 		if(handleJoystick != null) 
 		{
@@ -48,7 +55,7 @@ public class PlayerController : MonoBehaviour
 		Vector3 cameraForward = Camera.main.transform.forward;
 		cameraForward.y = 0;
 		Vector3 movement = (moveDir.x * Camera.main.transform.right + moveDir.z * cameraForward).normalized;
-		_rigidbody.position += movement * moveSpeed * Time.deltaTime;
+		_rigidbody.velocity = movement * moveSpeed * Time.fixedDeltaTime;
 	}
 
 	public void CheckHouseID() 

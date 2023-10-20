@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest 0
   m_EditorClassIdentifier: 
   idQuest: 0
-  currentValue: 6
+  currentValue: 1
   amount: 1
-  stateQuest: 0
+  stateQuest: 1
   questText: Pegue o inseticida

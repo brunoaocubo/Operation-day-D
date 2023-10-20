@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Quest 2
   m_EditorClassIdentifier: 
   idQuest: 2
-  currentValue: 0
+  currentValue: 3
   amount: 3
-  stateQuest: 0
+  stateQuest: 1
   questText: Elimine a larva

@@ -1,6 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
 
 public class ToolAction : MonoBehaviour
@@ -36,19 +37,23 @@ public class ToolAction : MonoBehaviour
 
 	private void Start()
 	{
-		foreach (var item in tools)
-		{
-			item.SetActive(false);
-		}
-
-		if(hideButtonsTutorial == true) 
-		{
-			foreach (var item in toolButton)
+		int scene = SceneManager.GetActiveScene().buildIndex;
+		if (scene == 1 || scene ==2)
+        {
+			foreach (var item in tools)
 			{
-				item.gameObject.SetActive(false);
+				item.SetActive(false);
+			}
+
+			if (hideButtonsTutorial == true)
+			{
+				foreach (var item in toolButton)
+				{
+					item.gameObject.SetActive(false);
+				}
 			}
 		}
-	}
+    }
 
 	private void Update()
 	{

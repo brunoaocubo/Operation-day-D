@@ -18,9 +18,14 @@ public class Tutorial : MonoBehaviour
 	private bool _startTutorial = false;
 	private bool _finishTutorial = false;
 
+	[Header("Ref Objects")]
+	[SerializeField] Transform doorHouse;
+
 	private void Start()
 	{
+		timerCount_txt.enabled = false;
 		_collisionsTutorial[0].enabled = false;
+		
 	}
 	private void OnTriggerEnter(Collider other)
 	{
@@ -46,7 +51,7 @@ public class Tutorial : MonoBehaviour
 		else
 		{
 			_collisionsTutorial[0].enabled = false;
-			Debug.Log("Not yet");
+			//Debug.Log("Not yet");
 		}
 	}
 
@@ -57,13 +62,13 @@ public class Tutorial : MonoBehaviour
 			PlayStage();
 		}
 
-
 	}
 
 	private IEnumerator WaitCutscene() 
 	{
-		
+		timerCount_txt.enabled = true;
 		yield return new WaitForSeconds((float)CutsceneTutorial.duration);
+		doorHouse.eulerAngles = new Vector3(doorHouse.rotation.x, 280f, doorHouse.rotation.y);
 		_startTutorial = true;
 	}
 

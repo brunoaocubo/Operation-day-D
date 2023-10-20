@@ -707,7 +707,7 @@ GameObject:
   - component: {fileID: 215691496}
   - component: {fileID: 215691497}
   m_Layer: 5
-  m_Name: FxSlider
+  m_Name: sfxSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -787,8 +787,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1929581648}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+      - m_Target: {fileID: 1929581650}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
         m_MethodName: SetEffectVolume
         m_Mode: 0
         m_Arguments:
@@ -1018,8 +1018,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1929581648}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+      - m_Target: {fileID: 1929581650}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
         m_MethodName: PlayBT
         m_Mode: 1
         m_Arguments:
@@ -1887,8 +1887,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1929581648}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+      - m_Target: {fileID: 1929581650}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
         m_MethodName: SetMusicVolume
         m_Mode: 0
         m_Arguments:
@@ -2884,8 +2884,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1929581648}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+      - m_Target: {fileID: 1929581650}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
         m_MethodName: QuitBT
         m_Mode: 1
         m_Arguments:
@@ -5445,28 +5445,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1929581649}
-  - component: {fileID: 1929581648}
+  - component: {fileID: 1929581650}
   m_Layer: 0
-  m_Name: Controller
+  m_Name: HUDController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1929581648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1929581647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90341b8d1d5c91d4292d0943e3f0bdfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicMixer: {fileID: 24100000, guid: 77f80731535262b46bd6fc0f7570cbda, type: 2}
-  effectMixer: {fileID: 24100000, guid: ce3785a18bb6cf248802cf724fe97929, type: 2}
 --- !u!4 &1929581649
 Transform:
   m_ObjectHideFlags: 0
@@ -5482,6 +5468,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1929581650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929581647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cf695f38cca68b4193c956d2b2d3335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxSlider: {fileID: 215691497}
+  musicSlider: {fileID: 659087065}
+  mapUI_img: {fileID: 0}
+  questUI_img: {fileID: 0}
+  musicMixer: {fileID: 24100000, guid: 77f80731535262b46bd6fc0f7570cbda, type: 2}
+  effectMixer: {fileID: 24100000, guid: ce3785a18bb6cf248802cf724fe97929, type: 2}
 --- !u!1 &1963334623
 GameObject:
   m_ObjectHideFlags: 0
@@ -5805,8 +5809,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1929581648}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+      - m_Target: {fileID: 1929581650}
+        m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
         m_MethodName: SesabBT
         m_Mode: 1
         m_Arguments:

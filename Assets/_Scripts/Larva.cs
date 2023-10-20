@@ -23,7 +23,7 @@ public class Larva : MonoBehaviour
 
     private void DestroyLarva() 
     {
-        FindAnyObjectByType<QuestsController>().UpdateProgressQuest(2, 1);
+        FindAnyObjectByType<QuestsController>().UpdateProgressQuest(questID, 1);
         Destroy(gameObject);
     }
 }
