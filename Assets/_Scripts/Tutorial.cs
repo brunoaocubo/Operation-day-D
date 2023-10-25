@@ -6,51 +6,45 @@ using UnityEngine.Timeline;
 
 public class Tutorial : MonoBehaviour
 {
-	[SerializeField] QuestsController quests;
-
-	[SerializeField] private PlayableDirector CutsceneTutorial;
-	[SerializeField] private float timerCount;
+	[SerializeField] private QuestController questController;
+	[SerializeField] private PlayableDirector cutsceneTutorial;
 	[SerializeField] private TextMeshProUGUI timerCount_txt;
-	[SerializeField] private Transform spawnHouse;
+	[SerializeField] private Transform spawnPointHouse;
+	[SerializeField] private Collider[] collisionsTutorial;
 
-	[SerializeField] private Collider[] _collisionsTutorial;
-	public bool collected = false;
+	private bool hasTools = false;
 	private bool _startTutorial = false;
 	private bool _finishTutorial = false;
 
-	[Header("Ref Objects")]
-	[SerializeField] Transform doorHouse;
-
 	private void Start()
 	{
-		timerCount_txt.enabled = false;
-		_collisionsTutorial[0].enabled = false;
-		
+		collisionsTutorial[0].enabled = false;
 	}
 	private void OnTriggerEnter(Collider other)
 	{
-		if (collected)
+		if (hasTools)
 		{
 			if (other.TryGetComponent(out PlayerController playerController))
 			{
-				CutsceneTutorial.gameObject.SetActive(true);
-				CutsceneTutorial.Play();
+				cutsceneTutorial.gameObject.SetActive(true);
+				cutsceneTutorial.Play();
 				StartCoroutine(WaitCutscene());
+
 				other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
-				other.gameObject.transform.position = spawnHouse.position;
-				_collisionsTutorial[0].enabled = false;
+				other.gameObject.transform.position = spawnPointHouse.position;
+				collisionsTutorial[0].enabled = false;
 			}
 		}
 
-		if (quests.CheckStateQuest(0) && quests.CheckStateQuest(1))
+		if (questController.CheckStateQuest(0) && questController.CheckStateQuest(1))
 		{
-			_collisionsTutorial[0].enabled = true;
-			_collisionsTutorial[1].enabled = false;
-			collected = true;
+			collisionsTutorial[0].enabled = true;
+			collisionsTutorial[1].enabled = false;
+			hasTools = true;
 		}
 		else
 		{
-			_collisionsTutorial[0].enabled = false;
+			collisionsTutorial[0].enabled = false;
 			//Debug.Log("Not yet");
 		}
 	}
@@ -59,19 +53,26 @@ public class Tutorial : MonoBehaviour
 	{
 		if (_startTutorial)
 		{
-			PlayStage();
+			//PlayStage();
 		}
 
+		if (questController.CheckStateQuest(0) &&
+			questController.CheckStateQuest(1) &&
+			questController.CheckStateQuest(2) &&
+			questController.CheckStateQuest(3)) 
+		{
+			_finishTutorial = true;
+		}
 	}
 
-	private IEnumerator WaitCutscene() 
+	private IEnumerator WaitCutscene()
 	{
-		timerCount_txt.enabled = true;
-		yield return new WaitForSeconds((float)CutsceneTutorial.duration);
-		doorHouse.eulerAngles = new Vector3(doorHouse.rotation.x, 280f, doorHouse.rotation.y);
+		//timerCount_txt.enabled = true;
+		yield return new WaitForSeconds((float)cutsceneTutorial.duration);
 		_startTutorial = true;
 	}
 
+	/*
 	void PlayStage()
 	{
 		if (timerCount > 0)
@@ -99,5 +100,5 @@ public class Tutorial : MonoBehaviour
 		float seconds = Mathf.FloorToInt(timeToDisplay % 60);
 		timerCount_txt.gameObject.SetActive(true);
 		timerCount_txt.text = string.Format("{0:00}:{1:00}", minutes, seconds);
-	}
+	}*/
 }

@@ -30,8 +30,6 @@ public class DialogueController : MonoBehaviour
     [Header("Dialogues")]
     public List<Dialogue> dialogues;
    
- 
-
     private void Awake()
     {
         backBT.interactable = false;

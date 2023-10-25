@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
 
-	public bool tutorialComplete = false;
-
 	private void Awake()
 	{
 		if(instance == null) 
@@ -19,21 +17,26 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
-			Destroy(gameObject);
+			Destroy(instance);
 		}
-		//DontDestroyOnLoad(this.gameObject);
+		DontDestroyOnLoad(this.gameObject);
 	}
 
 	public void LoadScene(int sceneId) 
 	{
 		SceneManager.LoadSceneAsync(sceneId);
 	}
-	
+	/*
+	private void OnApplicationQuit()
+	{
+		int lastSceneIndex = SceneManager.GetActiveScene().buildIndex;
+		Debug.Log(lastSceneIndex);
+		PlayerPrefs.SetInt("LastScene", lastSceneIndex);
+		PlayerPrefs.Save();
+	}*/
 
-	void Update()
-    {
-
-    }
-
-    
+	public int CheckSceneIndex() 
+	{
+		return SceneManager.GetActiveScene().buildIndex;
+	}
 }

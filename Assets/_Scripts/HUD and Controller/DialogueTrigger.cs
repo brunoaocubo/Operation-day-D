@@ -11,9 +11,6 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private DialogueController dialogueController;
     [SerializeField] private Dialogue[] dialogues;
 
-    
-
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

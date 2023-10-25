@@ -20,7 +20,7 @@ public class ToolAction : MonoBehaviour
 
 	[Header("Quests")]
 	[SerializeField] private int idQuest;
-	[SerializeField] private QuestsController questsController;
+	[SerializeField] private QuestController questController;
 
 	private Camera mainCamera;
 	private Ray _ray;
@@ -85,9 +85,9 @@ public class ToolAction : MonoBehaviour
 		}
 	}
 	
-	public void UseBleach()
+	public void UseSanitaryWater()
 	{
-		if (toolsType == ToolType.Bleach)
+		if (toolsType == ToolType.SanitaryWater)
 		{
 			if (_hitInfo.collider != null)
 			{
@@ -95,14 +95,14 @@ public class ToolAction : MonoBehaviour
 				{
 					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(waterClean_mat);
-					questsController.UpdateProgressQuest(idQuest, 1);
+					questController.UpdateProgressQuest(idQuest, 1);
 				}
 			}
 		}
 		/*
 		switch (toolsType)
 		{
-			case ToolType.Bleach:
+			case ToolType.SanitaryWater:
 				if (_hitInfo.collider != null)
 				{
 					if (_hitInfo.collider.gameObject.layer == 11)
@@ -151,7 +151,7 @@ public class ToolAction : MonoBehaviour
 				{
 					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(clayClean_mat);
-					questsController.UpdateProgressQuest(idQuest, 1);
+					questController.UpdateProgressQuest(idQuest, 1);
 				}
 			}
 		}
@@ -169,10 +169,16 @@ public class ToolAction : MonoBehaviour
 		toolsType = ToolType.Insecticide;
 	}
 
-	public void EquipBleach()
+	public void EquipSanitaryWater()
 	{
 		SetToolActive(1);
-		toolsType = ToolType.Bleach;
+		toolsType = ToolType.SanitaryWater;
+	}
+
+	public void EquipShovel()
+	{
+		SetToolActive(2);
+		toolsType = ToolType.Shovel;
 	}
 
 	public void UnlockToolButtons() 
@@ -185,12 +191,17 @@ public class ToolAction : MonoBehaviour
 				{
 					case ToolType.Insecticide:
 						toolButton[0].gameObject.SetActive(true);
-						questsController.UpdateProgressQuest(0, 1);
+						questController.UpdateProgressQuest(0, 1);
 						break;
 
-					case ToolType.Bleach:
+					case ToolType.SanitaryWater:
 						toolButton[1].gameObject.SetActive(true);
-						questsController.UpdateProgressQuest(1, 1);
+						questController.UpdateProgressQuest(1, 1);
+						break;
+
+					case ToolType.Shovel:
+						toolButton[2].gameObject.SetActive(true);
+						questController.UpdateProgressQuest(2, 1);
 						break;
 				}
 			}
@@ -200,10 +211,11 @@ public class ToolAction : MonoBehaviour
 
 	private void SetToolActive(int index)
 	{
+		/*
 		foreach (var item in tools)
 		{
 			item.SetActive(false);
-		}
+		}*/
 
 		if (!tools[index].activeInHierarchy)
 			tools[index].SetActive(true);

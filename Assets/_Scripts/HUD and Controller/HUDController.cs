@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
@@ -20,9 +19,11 @@ public class HUDController : MonoBehaviour
     [Header("Mixers")]
     [SerializeField] private AudioMixer musicMixer;
     [SerializeField] private AudioMixer effectMixer;
-
+   
+    [SerializeField] private GameObject continueGame_btn;
     private void Start()
     {
+        /*
         if (FindFirstObjectByType<Database>() != null)
         {
             database = FindFirstObjectByType<Database>();
@@ -33,10 +34,22 @@ public class HUDController : MonoBehaviour
             emptyObject.name = "Database";
             emptyObject.AddComponent<Database>();
             database = emptyObject.GetComponent<Database>();
-        }
+        }*/
 
-        sfxSlider.value = database.EffectVolume;
-        musicSlider.value = database.MusicVolume;
+        if(GameManager.instance.CheckSceneIndex() == 0) 
+        {
+			if (DataManager.Instance.fileExist)
+			{
+				continueGame_btn.SetActive(true);
+			}
+			else
+			{
+				continueGame_btn.SetActive(false);
+			}
+		}
+
+		sfxSlider.value = PlayerPrefs.GetFloat("effectVolume");
+        musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
     }
 
     public void MapActive()
@@ -56,7 +69,12 @@ public class HUDController : MonoBehaviour
 
     public void PlayBT()
     {
-        SceneManager.LoadScene(1);
+        GameManager.instance.LoadScene(1);
+    }
+
+    public void ContinueGame() 
+    {
+        GameManager.instance.LoadScene(2);
     }
 
     public void QuitBT()
@@ -73,7 +91,8 @@ public class HUDController : MonoBehaviour
     public void SetMusicVolume(float musicVolume)
     {
         musicMixer.SetFloat("musicVolume", musicVolume);
-        database.MusicVolume = musicVolume;
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        //database.MusicVolume = musicVolume;
         //Debug.Log("Volume da Música:" + database.MusicVolume);
 
     }
@@ -81,8 +100,10 @@ public class HUDController : MonoBehaviour
     public void SetEffectVolume(float effectVolume)
     {
         effectMixer.SetFloat("effectVolume", effectVolume);
-        database.EffectVolume = effectVolume;
-        //Debug.Log("Volume do SFX:" + database.EffectVolume);
-    }
+		PlayerPrefs.SetFloat("effectVolume", effectVolume);
+
+		//database.EffectVolume = effectVolume;
+		//Debug.Log("Volume do SFX:" + database.EffectVolume);
+	}
 
 }

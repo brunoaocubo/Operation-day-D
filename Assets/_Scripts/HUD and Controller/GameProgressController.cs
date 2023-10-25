@@ -32,7 +32,7 @@ public class GameProgressController : MonoBehaviour
         {
             achievementSlotUI[i].tittle.text = achievement[i].tittle;
             achievementSlotUI[i].description.text = achievement[i].description;
-            achievementSlotUI[i].image.sprite = achievement[i].image;
+            //achievementSlotUI[i].image.sprite = achievement[i].image;
             if(achievement[i].isCompleted)
             {
                 achievementSlotUI[i].slotAchiement.color = colorSlot[1];

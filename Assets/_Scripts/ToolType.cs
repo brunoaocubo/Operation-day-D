@@ -2,6 +2,6 @@
 {
 	None,
 	Insecticide,
-	Bleach,
+	SanitaryWater,
 	Shovel
 }
