@@ -16,4 +16,4 @@ MonoBehaviour:
   currentValue: 0
   amount: 2
   stateQuest: 0
-  questText: "Aplique na \xE1gua"
+  questText: Elimine a Larva

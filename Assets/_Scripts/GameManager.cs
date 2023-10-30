@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
 		}
 		else
 		{
-			Destroy(instance);
+			Destroy(gameObject);
 		}
-		DontDestroyOnLoad(this.gameObject);
+		DontDestroyOnLoad(gameObject);
 	}
 
 	public void LoadScene(int sceneId) 

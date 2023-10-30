@@ -1,7 +1,13 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+	
+	readonly private string _isAttachInsecticide = "isAttachInsecticide";
+	readonly private string _isAttachSanitaryWater = "isAttachSanitaryWater";
+	readonly private string _isAttachShovel = "isAttachShovel";
+
 	[SerializeField] private Inputs inputController;
 	[SerializeField] private RectTransform handleJoystick;
 
@@ -14,16 +20,51 @@ public class PlayerController : MonoBehaviour
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
-
-	private Vector3 movement, camaraFoward, moveDir;
+	private Animator _anim;
 
 	private void Start()
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
+		_anim = GetComponent<Animator>();
 	}
 
 	private void Update()
 	{
+		ToolType toolType = GetComponent<ToolAction>().ToolsType;
+		switch (toolType)
+		{
+			case ToolType.None:
+				_anim.SetBool(_isAttachInsecticide, false);
+				_anim.SetBool(_isAttachSanitaryWater, false);
+				_anim.SetBool(_isAttachShovel, false);
+				break;
+			case ToolType.Insecticide:
+				_anim.SetBool(_isAttachInsecticide, true);
+				_anim.SetBool(_isAttachSanitaryWater, false);
+				_anim.SetBool(_isAttachShovel, false);
+				break;
+			case ToolType.SanitaryWater:
+				_anim.SetBool(_isAttachSanitaryWater, true);
+				_anim.SetBool(_isAttachInsecticide, false);
+				_anim.SetBool(_isAttachShovel, false);
+
+				break;
+			case ToolType.Shovel:
+				_anim.SetBool(_isAttachShovel, true);
+				_anim.SetBool(_isAttachInsecticide, false);
+				_anim.SetBool(_isAttachSanitaryWater, false);
+				break;
+			default:
+				break;
+		}
+		if(toolType == ToolType.Insecticide) 
+		{
+			_anim.SetBool(_isAttachInsecticide, true);
+		}
+		else
+		{
+			_anim.SetBool(_isAttachInsecticide, false);
+		}
 
 		//Move();
 		if(handleJoystick.transform.localPosition.magnitude <1) 

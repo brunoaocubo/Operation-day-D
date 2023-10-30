@@ -30,6 +30,8 @@ public class ToolAction : MonoBehaviour
 	[Header("CameraElastic")]
 	[SerializeField] private CameraEffect cameraEffect;
 
+	public ToolType ToolsType => toolsType;
+
 	private void Awake()
 	{
 		mainCamera = Camera.main;	
@@ -57,8 +59,8 @@ public class ToolAction : MonoBehaviour
 
 	private void Update()
 	{
-		//ExecuteAction();
 		ToolActionRaycast();
+
 		if (toolsType == ToolType.Insecticide)
 		{
 			UseInsecticide();
@@ -99,48 +101,8 @@ public class ToolAction : MonoBehaviour
 				}
 			}
 		}
-		/*
-		switch (toolsType)
-		{
-			case ToolType.SanitaryWater:
-				if (_hitInfo.collider != null)
-				{
-					if (_hitInfo.collider.gameObject.layer == 11)
-					{
-						_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
-						_hitInfo.collider.GetComponent<Renderer>().material = new Material(waterClean_mat);
-						questsController.CheckQuest(idQuest, 1);
-					}
-
-				}
-				break;
-			case ToolType.Shovel:
-				if (_hitInfo.collider != null)
-				{
-					if (_hitInfo.collider.gameObject.layer == 12)
-					{
-						_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
-						_hitInfo.collider.GetComponent<Renderer>().material = new Material(clayClean_mat);
-						questsController.CheckQuest(idQuest, 1);
-					}
-				}	
-				break;
-		}
-		
-		foreach (var item in holdButton) 
-		{
-			if (item.IsPressed) 
-			{
-				
-			}
-			else 
-			{
-				insecticideDamageBox.enabled = false;
-			}
-		}*/
 	}
 
-	//TERMINAR DE CRIAR O SISTEMA
 	public void UseShovel() 
 	{
 		if(toolsType == ToolType.Shovel) 
@@ -211,15 +173,14 @@ public class ToolAction : MonoBehaviour
 
 	private void SetToolActive(int index)
 	{
-		/*
-		foreach (var item in tools)
-		{
-			item.SetActive(false);
-		}*/
-
 		if (!tools[index].activeInHierarchy)
 			tools[index].SetActive(true);
 		else
 			tools[index].SetActive(false);
+	}
+
+	public void CheckActiveTools() 
+	{
+
 	}
 }

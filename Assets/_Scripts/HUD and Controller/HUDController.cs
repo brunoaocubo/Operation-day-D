@@ -1,3 +1,5 @@
+using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
@@ -104,6 +106,23 @@ public class HUDController : MonoBehaviour
 
 		//database.EffectVolume = effectVolume;
 		//Debug.Log("Volume do SFX:" + database.EffectVolume);
+	}
+
+    public void OptionsFadeIn(CanvasGroup canvasGroup, RectTransform rectTransform, float fadeTime) 
+    {
+        canvasGroup.alpha = 0f;
+        rectTransform.transform.localPosition = new Vector3(-1000f, 0f, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0, 0f), fadeTime, false).SetEase(Ease.OutElastic);
+        canvasGroup.DOFade(1, fadeTime);
+    }
+
+    public void OptionsFadeOut(CanvasGroup canvasGroup, RectTransform rectTransform, float fadeTime) 
+    {
+		canvasGroup.alpha = 1f;
+		//rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
+		rectTransform.DOAnchorPos(new Vector2(-1000f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
+		canvasGroup.DOFade(0, fadeTime);
+        canvasGroup.GetComponent<GameObject>().SetActive(false);
 	}
 
 }

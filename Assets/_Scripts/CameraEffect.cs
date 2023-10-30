@@ -12,7 +12,7 @@ public class CameraEffect : MonoBehaviour
 
 	Camera mainCamera;
 	private Vector3 cameraOriginalPosition;
-	private bool isEffectRunning;
+	private bool isEffectRunning = false;
 
 	private void Start()
 	{
