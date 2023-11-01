@@ -20,6 +20,7 @@ public class Tutorial : MonoBehaviour
 	{
 		collisionsTutorial[0].enabled = false;
 	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (hasTools)
@@ -45,7 +46,6 @@ public class Tutorial : MonoBehaviour
 		else
 		{
 			collisionsTutorial[0].enabled = false;
-			//Debug.Log("Not yet");
 		}
 	}
 

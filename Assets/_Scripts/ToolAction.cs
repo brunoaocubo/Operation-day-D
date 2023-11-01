@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.VFX;
+using System.Collections;
 
 public class ToolAction : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] private Material waterClean_mat;
 	[SerializeField] private Material clayClean_mat;
 
+	[Header("Tools Settings")]
 	[SerializeField] private GameObject[] tools;
 	[SerializeField] private GameObject[] toolButton;
 	[SerializeField] private HoldButton[] holdButton;
@@ -22,15 +24,16 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] private int idQuest;
 	[SerializeField] private QuestController questController;
 
+	[Header("CameraElastic")]
+	[SerializeField] private CameraEffect cameraEffect;
+
 	private Camera mainCamera;
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool hideButtonsTutorial = true;
 
-	[Header("CameraElastic")]
-	[SerializeField] private CameraEffect cameraEffect;
-
 	public ToolType ToolsType => toolsType;
+
 
 	private void Awake()
 	{
@@ -40,7 +43,7 @@ public class ToolAction : MonoBehaviour
 	private void Start()
 	{
 		int scene = SceneManager.GetActiveScene().buildIndex;
-		if (scene == 1 || scene ==2)
+		if (scene == 1 || scene == 2)
         {
 			foreach (var item in tools)
 			{
@@ -118,6 +121,51 @@ public class ToolAction : MonoBehaviour
 			}
 		}
 	}
+
+	public void EquipInsecticide()
+	{
+		SetToolActive(0);
+	}
+
+	public void EquipSanitaryWater()
+	{
+		SetToolActive(1);
+	}
+
+	public void EquipShovel()
+	{
+		SetToolActive(2);
+	}
+
+	private void SetToolActive(int index)
+	{
+		if (!tools[index].activeInHierarchy)
+			tools[index].SetActive(true);
+		else
+		{
+			tools[index].SetActive(false);
+		}
+
+		switch (index)
+		{
+			case 0:
+				if (tools[0].activeInHierarchy) { toolsType = ToolType.Insecticide; }
+				else
+					toolsType = ToolType.None;
+				break;
+			case 1:
+				if (tools[1].activeInHierarchy) { toolsType = ToolType.SanitaryWater; }
+				else
+					toolsType = ToolType.None;
+				break;
+			case 2:
+				if (tools[2].activeInHierarchy) { toolsType = ToolType.Shovel; }
+				else
+					toolsType = ToolType.None;
+				break;
+		}
+	}
+
 	private void ToolActionRaycast()
 	{
 		_ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
@@ -125,24 +173,7 @@ public class ToolAction : MonoBehaviour
 		//Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 	}
 
-	public void EquipInsecticide()
-	{
-		SetToolActive(0);
-		toolsType = ToolType.Insecticide;
-	}
-
-	public void EquipSanitaryWater()
-	{
-		SetToolActive(1);
-		toolsType = ToolType.SanitaryWater;
-	}
-
-	public void EquipShovel()
-	{
-		SetToolActive(2);
-		toolsType = ToolType.Shovel;
-	}
-
+	#region Tutorial First Time
 	public void UnlockToolButtons() 
 	{
 		if(_hitInfo.collider != null) 
@@ -170,17 +201,5 @@ public class ToolAction : MonoBehaviour
 			hideButtonsTutorial = false;
 		}
 	}
-
-	private void SetToolActive(int index)
-	{
-		if (!tools[index].activeInHierarchy)
-			tools[index].SetActive(true);
-		else
-			tools[index].SetActive(false);
-	}
-
-	public void CheckActiveTools() 
-	{
-
-	}
+	#endregion
 }
