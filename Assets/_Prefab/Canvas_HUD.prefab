@@ -1672,7 +1672,7 @@ MonoBehaviour:
       _MethodName: SetActive
       _PersistentArguments:
       - _Type: 1
-        _Int: 0
+        _Int: 1
         _String: 
         _X: 0
         _Y: 0

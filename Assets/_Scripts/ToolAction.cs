@@ -38,6 +38,7 @@ public class ToolAction : MonoBehaviour
 	private void Awake()
 	{
 		mainCamera = Camera.main;	
+		questController = FindAnyObjectByType<QuestController>();
 	}
 
 	private void Start()

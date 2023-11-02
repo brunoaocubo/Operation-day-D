@@ -111,8 +111,8 @@ public class HUDController : MonoBehaviour
     public void OptionsFadeIn(CanvasGroup canvasGroup, RectTransform rectTransform, float fadeTime) 
     {
         canvasGroup.alpha = 0f;
-        rectTransform.transform.localPosition = new Vector3(-1000f, 0f, 0f);
-        rectTransform.DOAnchorPos(new Vector2(0, 0f), fadeTime, false).SetEase(Ease.OutElastic);
+        rectTransform.transform.localPosition = new Vector3(-1000f, rectTransform.localPosition.y, 0f);
+        rectTransform.DOAnchorPos(new Vector2(0, 0f), fadeTime, false).SetEase(Ease.OutQuint);
         canvasGroup.DOFade(1, fadeTime);
     }
 
@@ -122,7 +122,7 @@ public class HUDController : MonoBehaviour
 		//rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
 		rectTransform.DOAnchorPos(new Vector2(-1000f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
 		canvasGroup.DOFade(0, fadeTime);
-        canvasGroup.GetComponent<GameObject>().SetActive(false);
+        //canvasGroup.GetComponent<GameObject>().SetActive(false);
 	}
 
 }
