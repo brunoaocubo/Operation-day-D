@@ -13,14 +13,23 @@ public class DialogueController : MonoBehaviour
     private string[] textsDialogue;
     [SerializeField] float speedTextTransition;
 
-    [Header("Link UI Objects")]
+    [Header("Dialogue UI Objects")]
     [SerializeField] private GameObject dialogueCanvas;
-    [SerializeField] private TextMeshProUGUI talkerName;
-    [SerializeField] private Image rightImageUI;
-    [SerializeField] private Image  leftImageUI;
     [SerializeField] private TextMeshProUGUI textAreaUI;
     [SerializeField] private Button nextBT;
     [SerializeField] private Button backBT;
+
+    [Header("Talker Left")]
+    [SerializeField] private GameObject talkerEmptyLeft;
+    [SerializeField] private Image leftImageUI;
+    [SerializeField] private TextMeshProUGUI talkerNameTextLeft;
+   
+
+    [Header("Talker Right")]
+    [SerializeField] private GameObject talkerEmptyRight;
+    [SerializeField] private Image rightImageUI;
+    [SerializeField] private TextMeshProUGUI talkerNameTextRight;
+
 
     [Header("Controllers")]
     public int nextLevel;
@@ -42,19 +51,27 @@ public class DialogueController : MonoBehaviour
     public void UpdateParameters(Dialogue dialogue)
     {
         textAreaUI.text = "";
-        talkerName.text = dialogue.talkerName;
-        if(dialogue.isRightSide)
+        
+        if (dialogue.isRightSide)
         {
+            textAreaUI.horizontalAlignment = HorizontalAlignmentOptions.Right;
+            talkerNameTextRight.text = dialogue.talkerName;
             this.rightImageUI.sprite = dialogue.sprite;
             this.rightImageUI.enabled = true;
-            this.leftImageUI.enabled = false;
-            
+            this.talkerEmptyLeft.SetActive(false);
+            this.talkerEmptyRight.SetActive(true);
+            //this.leftImageUI.enabled = false;
+
         }
         else
         {
+            textAreaUI.horizontalAlignment = HorizontalAlignmentOptions.Left;
+            talkerNameTextLeft.text = dialogue.talkerName;
             this.leftImageUI.sprite = dialogue.sprite;
             this.rightImageUI.enabled = false;
-            this.leftImageUI.enabled = true;
+            this.talkerEmptyRight.SetActive(false);
+            this.talkerEmptyLeft.SetActive(true);
+            //this.leftImageUI.enabled = true;
         }
         //this.texto.text = dialogo.messagens[messagemAtual];
         textsDialogue = dialogue.messages; //

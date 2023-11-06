@@ -2,6 +2,7 @@ using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HUDController : MonoBehaviour
@@ -38,7 +39,7 @@ public class HUDController : MonoBehaviour
             database = emptyObject.GetComponent<Database>();
         }*/
 
-        if(GameManager.instance.CheckSceneIndex() == 0) 
+        if(SceneManager.GetActiveScene().buildIndex ==0) // (GameManager.instance.CheckSceneIndex() == 0) 
         {
 			if (DataManager.Instance.fileExist)
 			{
