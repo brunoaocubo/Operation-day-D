@@ -97,6 +97,32 @@ public class PlayerController : MonoBehaviour
 		cameraForward.y = 0;
 		Vector3 movement = (moveDir.x * Camera.main.transform.right + moveDir.z * cameraForward).normalized;
 		_rigidbody.velocity = movement * moveSpeed * Time.fixedDeltaTime;
+
+
+		float gravityForce = 9.81f;
+		float maxFallSpeed = 9.81f;
+		float multiplyGravityForce = 10f;
+
+		_rigidbody.AddForce(Vector3.down * gravityForce * multiplyGravityForce);
+
+		// Limite a velocidade vertical para evitar que o objeto caia muito rápido
+		if (_rigidbody.velocity.y < -maxFallSpeed)
+		{
+		_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, -maxFallSpeed * multiplyGravityForce, _rigidbody.velocity.z);
+		}
+
+		RaycastHit hit;
+		if (Physics.Raycast(transform.position, Vector3.down, out hit))
+		{
+			float slopeAngle = Vector3.Angle(hit.normal, Vector3.up);
+
+			if (slopeAngle > 45f)
+			{
+				Vector3 slopeDirection = Vector3.Cross(hit.normal, Vector3.down);
+				Vector3 force = slopeDirection * gravityForce;
+				_rigidbody.AddForce(force);
+			}
+		}
 	}
 
 	public void CheckHouseID() 
