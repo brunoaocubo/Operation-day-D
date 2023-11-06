@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 2268906122dafaf4880212713ae78e40,
+  m_LightingDataAsset: {fileID: 112000000, guid: 1c897956c5f49114eb0d4b8be80071de,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 8f0bb1da790862e48a712a0071b640cd,
     type: 2}
@@ -781,6 +781,7 @@ MonoBehaviour:
   questUI_img: {fileID: 609271413}
   musicMixer: {fileID: 24100000, guid: 77f80731535262b46bd6fc0f7570cbda, type: 2}
   effectMixer: {fileID: 24100000, guid: ce3785a18bb6cf248802cf724fe97929, type: 2}
+  continueGame_btn: {fileID: 0}
 --- !u!4 &89461173
 Transform:
   m_ObjectHideFlags: 0
@@ -2323,7 +2324,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 221306135}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a4108d4bd9ff1d4d921eb9924311dcf, type: 3}
+  m_Script: {fileID: 11500000, guid: a66884645dcd5674a986033d6303a9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   nextLevel: 2
@@ -2333,8 +2334,8 @@ MonoBehaviour:
   - {fileID: 908751421}
   - {fileID: 1111271758}
   questList:
-  - {fileID: 11400000, guid: 73ef19dce6523ef4ba3deb8950c1ed75, type: 2}
-  - {fileID: 11400000, guid: df4b84bd4c8679c4a93ebdd9fffbda85, type: 2}
+  - {fileID: 11400000, guid: 436a2a59f82654942bb0185fa6b773e5, type: 2}
+  - {fileID: 11400000, guid: ad1376c76a56e8549adb113a4625e3ef, type: 2}
 --- !u!1 &224883571
 GameObject:
   m_ObjectHideFlags: 0
@@ -2455,7 +2456,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70e470213032c5e48b2a9a18ca2427ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialComplete: 0
 --- !u!1 &233798965
 GameObject:
   m_ObjectHideFlags: 0
@@ -4983,8 +4983,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 190acd6cf56da0c4cb67e6afd083970f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 1
   fpsUI: {fileID: 447411468}
+  targetFPS: 60
 --- !u!1 &448373265
 GameObject:
   m_ObjectHideFlags: 0
@@ -12842,7 +12842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  questID: 4
+  questID: 9
 --- !u!4 &1354283956
 Transform:
   m_ObjectHideFlags: 0
@@ -19305,8 +19305,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4603580898790245015}
-  - {fileID: 7462941029517024760}
   - {fileID: 5018026728492348754}
+  - {fileID: 7462941029517024760}
   - {fileID: 3674197443551808562}
   - {fileID: 6946340205296345846}
   m_Father: {fileID: 919483812}
@@ -19531,8 +19531,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7270015692493767943}
-        m_TargetAssemblyTypeName: Tools, Assembly-CSharp
-        m_MethodName: EquipBleach
+        m_TargetAssemblyTypeName: ToolAction, Assembly-CSharp
+        m_MethodName: EquipSanitaryWater
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19565,6 +19565,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1552058817}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!23 &429257477651348179
 MeshRenderer:
@@ -22090,7 +22102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 150
-  questID: 4
+  questID: 9
 --- !u!4 &2296166907731054885
 Transform:
   m_ObjectHideFlags: 0
@@ -22926,6 +22938,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 233798965}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!33 &3048235829006346780
 MeshFilter:
@@ -24389,7 +24413,7 @@ GameObject:
   - component: {fileID: 4424977932265062300}
   - component: {fileID: 403291228740084196}
   m_Layer: 5
-  m_Name: Bleach_btn
+  m_Name: SanitaryWater_btn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28253,8 +28277,8 @@ MonoBehaviour:
   - {fileID: 4166003062255391575}
   holdButton:
   - {fileID: 3217511273333053993}
-  idQuest: 5
-  questsController: {fileID: 221306137}
+  idQuest: 10
+  questController: {fileID: 221306137}
   cameraEffect: {fileID: 330585550}
 --- !u!4 &7277523058926274275
 Transform:
@@ -29657,7 +29681,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 7270015692493767943}
         m_TargetAssemblyTypeName: ToolAction, Assembly-CSharp
-        m_MethodName: UseBleach
+        m_MethodName: UseSanitaryWater
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

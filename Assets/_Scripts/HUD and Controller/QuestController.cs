@@ -54,9 +54,9 @@ public class QuestController : MonoBehaviour, IQuestController
                         quest.stateQuest = true;
                         quest_txt[i].fontStyle = FontStyles.Strikethrough;
                         quest_txt[i].color = Color.red;
-                        questsProgressUI.text = "Missões: " + questsCompleted + "/" + questsRemaing;
-
 						questsCompleted++;
+						questsProgressUI.text = "Missões: " + questsCompleted + "/" + questsRemaing;
+
 					}
                 }
             }

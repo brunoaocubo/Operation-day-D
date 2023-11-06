@@ -171,7 +171,7 @@ public class ToolAction : MonoBehaviour
 	{
 		_ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
-		//Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
+		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 	}
 
 	#region Tutorial First Time
