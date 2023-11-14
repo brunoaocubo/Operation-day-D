@@ -3982,7 +3982,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4688421062944602283}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: d7d4f7941dbd1d94c917f647fd77d680, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5977,7 +5977,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!136 &31412921676788676
 CapsuleCollider:
   m_ObjectHideFlags: 0
