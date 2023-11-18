@@ -22,6 +22,12 @@ public class PlayerController : MonoBehaviour
 	private bool _isGrounded = false;
 	private Animator _anim;
 
+	private void Awake()
+	{
+		inputController = FindAnyObjectByType<Inputs>();
+
+	}
+
 	private void Start()
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();

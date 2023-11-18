@@ -39,6 +39,7 @@ public class ToolAction : MonoBehaviour
 	{
 		mainCamera = Camera.main;	
 		questController = FindAnyObjectByType<QuestController>();
+		holdButton[0] = FindFirstObjectByType<HoldButton>();
 	}
 
 	private void Start()
