@@ -31,7 +31,7 @@ Transform:
   - {fileID: 9214726205849581783}
   - {fileID: 208972463422521896}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &458800283651064631
 GameObject:
@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 9214726205849581783}
   - component: {fileID: 1783330321079470368}
   - component: {fileID: 8557817992659234888}
+  - component: {fileID: 4915807360955340111}
   m_Layer: 0
   m_Name: "C\xEDrculo"
   m_TagString: Untagged
@@ -221,3 +222,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4915807360955340111
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585214835420424724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.6397852, y: 0.21448526, z: 0.6397852}
+  m_Center: {x: 0, y: -0.013789043, z: 0}
