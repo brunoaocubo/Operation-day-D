@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
 
 	public bool fileExist;
 
+	/*
 	private void Awake()
 	{
 		if (Instance == null) 
@@ -30,7 +31,7 @@ public class DataManager : MonoBehaviour
 			fileExist = true;
 		}
 		DontDestroyOnLoad(this.gameObject);
-	}
+	}*/
 
 	public void LoadGameData()
 	{

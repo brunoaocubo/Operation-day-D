@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
+	private void Start()
+	{
+
+	}
+
 	public void LoadScene(int sceneId) 
 	{
 		SceneManager.LoadSceneAsync(sceneId);

@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private RectTransform handleJoystick;
 
 	[Header("Config Player")]
-	[SerializeField] private float moveSpeed;
+	[SerializeField] private float moveSpeed = 300f;
 	[SerializeField] private float distanceRay = 1f;
 
 	private Rigidbody _rigidbody;
@@ -22,10 +22,11 @@ public class PlayerController : MonoBehaviour
 	private bool _isGrounded = false;
 	private Animator _anim;
 
+	public RectTransform HandleJoystick { get => handleJoystick; set => handleJoystick = value; }
+
 	private void Awake()
 	{
 		inputController = FindAnyObjectByType<Inputs>();
-
 	}
 
 	private void Start()
@@ -73,7 +74,7 @@ public class PlayerController : MonoBehaviour
 		}
 
 		//Move();
-		if(handleJoystick.transform.localPosition.magnitude <1) 
+		if(HandleJoystick.transform.localPosition.magnitude <1) 
 		{
 			_inputVector = Vector2.zero;
 		}
@@ -90,9 +91,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
 	{
-		if(handleJoystick != null) 
+		if(HandleJoystick != null) 
 		{
-			handleJoystick.transform.localPosition = new Vector2(0, 0);
+			HandleJoystick.transform.localPosition = new Vector2(0, 0);
 		}
 	}
 
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
 		// Limite a velocidade vertical para evitar que o objeto caia muito rápido
 		if (_rigidbody.velocity.y < -maxFallSpeed)
 		{
-		_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, -maxFallSpeed * multiplyGravityForce, _rigidbody.velocity.z);
+			_rigidbody.velocity = new Vector3(_rigidbody.velocity.x, -maxFallSpeed * multiplyGravityForce, _rigidbody.velocity.z);
 		}
 
 		RaycastHit hit;

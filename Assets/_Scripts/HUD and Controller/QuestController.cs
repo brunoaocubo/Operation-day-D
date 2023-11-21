@@ -23,7 +23,8 @@ public class QuestController : MonoBehaviour, IQuestController
 
         for(int i=0; i<questList.Length; i++)
         {
-            if (questList[i].currentValue >= questList[i].amount) 
+			questList[i].currentValue = 0;
+			if (questList[i].currentValue >= questList[i].amount) 
             {
                 questList[i].stateQuest = true;
             }
@@ -32,7 +33,6 @@ public class QuestController : MonoBehaviour, IQuestController
                 questList[i].stateQuest = false;
             }
 
-			//questList[i].currentValue = 0;
 			quest_txt[i].text = questList[i].currentValue + "/" + questList[i].amount + " " + questList[i].questText;
 		}
     }

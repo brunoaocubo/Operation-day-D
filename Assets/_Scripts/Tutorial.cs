@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,10 +8,15 @@ using UnityEngine.Timeline;
 public class Tutorial : MonoBehaviour
 {
 	[SerializeField] private QuestController questController;
-	[SerializeField] private PlayableDirector cutsceneTutorial;
+	//[SerializeField] private PlayableDirector cutsceneTutorial;
 	[SerializeField] private TextMeshProUGUI timerCount_txt;
-	[SerializeField] private Transform spawnPointHouse;
+	[SerializeField] private Transform spawnPointTutorial;
 	[SerializeField] private Collider[] collisionsTutorial;
+	[SerializeField] private Transform door;
+
+	[SerializeField] private GameObject UI;
+	[SerializeField] private PlayerController Player;
+	[SerializeField] private GameObject SubCamera;
 
 	private bool hasTools = false;
 	private bool _startTutorial = false;
@@ -27,13 +33,13 @@ public class Tutorial : MonoBehaviour
 		{
 			if (other.TryGetComponent(out PlayerController playerController))
 			{
-				cutsceneTutorial.gameObject.SetActive(true);
-				cutsceneTutorial.Play();
+				//cutsceneTutorial.gameObject.SetActive(true);
+				//cutsceneTutorial.Play();
 				StartCoroutine(WaitCutscene());
 
-				other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
-				other.gameObject.transform.position = spawnPointHouse.position;
-				collisionsTutorial[0].enabled = false;
+				//other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
+				//other.gameObject.transform.position = spawnPointHouse.position;
+				//collisionsTutorial[0].enabled = false;
 			}
 		}
 
@@ -41,6 +47,7 @@ public class Tutorial : MonoBehaviour
 		{
 			collisionsTutorial[0].enabled = true;
 			collisionsTutorial[1].enabled = false;
+			collisionsTutorial[2].enabled = false;
 			hasTools = true;
 		}
 		else
@@ -61,14 +68,22 @@ public class Tutorial : MonoBehaviour
 			questController.CheckStateQuest(2) &&
 			questController.CheckStateQuest(3)) 
 		{
-			_finishTutorial = true;
+			PlayerPrefs.SetInt("TutorialComplete", 1);
 		}
 	}
 
 	private IEnumerator WaitCutscene()
 	{
 		//timerCount_txt.enabled = true;
-		yield return new WaitForSeconds((float)cutsceneTutorial.duration);
+		Player.HandleJoystick.localPosition = Vector3.zero;
+		UI.SetActive(false);
+		SubCamera.SetActive(true);
+		yield return new WaitForSeconds(5f);
+		collisionsTutorial[0].enabled = false;
+		UI.SetActive(true);
+		SubCamera.SetActive(false);
+
+		//Player.SetActive(true);
 		_startTutorial = true;
 	}
 

@@ -23,10 +23,11 @@ public class HUDController : MonoBehaviour
     [SerializeField] private AudioMixer musicMixer;
     [SerializeField] private AudioMixer effectMixer;
    
-    [SerializeField] private GameObject continueGame_btn;
-    private void Start()
+    [SerializeField] private Button continueGame_btn;
+
+	private void Start()
     {
-        /*
+		/*
         if (FindFirstObjectByType<Database>() != null)
         {
             database = FindFirstObjectByType<Database>();
@@ -39,15 +40,28 @@ public class HUDController : MonoBehaviour
             database = emptyObject.GetComponent<Database>();
         }*/
 
-        if(SceneManager.GetActiveScene().buildIndex ==0) // (GameManager.instance.CheckSceneIndex() == 0) 
+		//      if(SceneManager.GetActiveScene().buildIndex ==0) // (GameManager.instance.CheckSceneIndex() == 0) 
+		//      {
+		//	if (DataManager.Instance.fileExist)
+		//	{
+		//		continueGame_btn.SetActive(true);
+		//	}
+		//	else
+		//	{
+		//		continueGame_btn.SetActive(false);
+		//	}
+		//}
+
+        if(continueGame_btn != null)
         {
-			if (DataManager.Instance.fileExist)
+			if (PlayerPrefs.GetInt("TutorialComplete") == 1)
 			{
-				continueGame_btn.SetActive(true);
+				continueGame_btn.interactable = true;
 			}
 			else
 			{
-				continueGame_btn.SetActive(false);
+				continueGame_btn.interactable = false;
+
 			}
 		}
 

@@ -17,29 +17,29 @@ public class ToolAction : MonoBehaviour
 
 	[Header("Tools Settings")]
 	[SerializeField] private GameObject[] tools;
-	[SerializeField] private GameObject[] toolButton;
+	[SerializeField] protected GameObject[] toolButton;
 	[SerializeField] private HoldButton[] holdButton;
 
 	[Header("Quests")]
-	[SerializeField] private int idQuest;
-	[SerializeField] private QuestController questController;
+	//[SerializeField] private int idQuest;
+	protected QuestController questController;
 
 	[Header("CameraElastic")]
 	[SerializeField] private CameraEffect cameraEffect;
 
 	private Camera mainCamera;
 	private Ray _ray;
-	private RaycastHit _hitInfo;
-	private bool hideButtonsTutorial = true;
+	protected RaycastHit _hitInfo;
+	protected bool hideButtonsTutorial = true;
 
 	public ToolType ToolsType => toolsType;
 
 
 	private void Awake()
 	{
-		mainCamera = Camera.main;	
+		mainCamera = Camera.main;
+		holdButton[0] = FindAnyObjectByType<HoldButton>();
 		questController = FindAnyObjectByType<QuestController>();
-		holdButton[0] = FindFirstObjectByType<HoldButton>();
 	}
 
 	private void Start()
@@ -72,6 +72,17 @@ public class ToolAction : MonoBehaviour
 		}
 	}
 
+	public void OpenDoor() 
+	{
+		if(_hitInfo.collider != null) 
+		{
+			if(_hitInfo.collider.TryGetComponent(out DoorRotation door)) 
+			{
+				StartCoroutine(door.Rotation());
+			}
+		}
+	}
+
 	private void UseInsecticide() 
 	{
 		if (holdButton[0].IsClicked)
@@ -98,11 +109,11 @@ public class ToolAction : MonoBehaviour
 		{
 			if (_hitInfo.collider != null)
 			{
-				if (_hitInfo.collider.gameObject.layer == 11)
+				if (_hitInfo.collider.TryGetComponent(out WaterToxicIdentity waterToxicIdentity))
 				{
 					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(waterClean_mat);
-					questController.UpdateProgressQuest(idQuest, 1);
+					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
 			}
 		}
@@ -114,11 +125,11 @@ public class ToolAction : MonoBehaviour
 		{
 			if (_hitInfo.collider != null)
 			{
-				if (_hitInfo.collider.gameObject.layer == 12)
+				if (_hitInfo.collider.TryGetComponent(out WaterToxicIdentity waterToxicIdentity))
 				{
 					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(clayClean_mat);
-					questController.UpdateProgressQuest(idQuest, 1);
+					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
 			}
 		}
@@ -174,34 +185,4 @@ public class ToolAction : MonoBehaviour
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
 		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 	}
-
-	#region Tutorial First Time
-	public void UnlockToolButtons() 
-	{
-		if(_hitInfo.collider != null) 
-		{
-			if (_hitInfo.collider.TryGetComponent(out Tool tool))
-			{
-				switch (tool.toolsType)
-				{
-					case ToolType.Insecticide:
-						toolButton[0].gameObject.SetActive(true);
-						questController.UpdateProgressQuest(0, 1);
-						break;
-
-					case ToolType.SanitaryWater:
-						toolButton[1].gameObject.SetActive(true);
-						questController.UpdateProgressQuest(1, 1);
-						break;
-
-					case ToolType.Shovel:
-						toolButton[2].gameObject.SetActive(true);
-						questController.UpdateProgressQuest(2, 1);
-						break;
-				}
-			}
-			hideButtonsTutorial = false;
-		}
-	}
-	#endregion
 }
