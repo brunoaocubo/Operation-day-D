@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUDController : MonoBehaviour
 {
@@ -25,9 +26,17 @@ public class HUDController : MonoBehaviour
    
     [SerializeField] private Button continueGame_btn;
 
+    [Header("Menu")]
+    [SerializeField] private Image outlineBT;
+    [SerializeField] private TextMeshProUGUI outlineTextBT;
+    [SerializeField] private Sprite outlineDefault;
+    [SerializeField] private Sprite outlineSelected;
+
+    private int outlineEnabled = 0;
+
 	private void Start()
     {
-		/*
+        /*
         if (FindFirstObjectByType<Database>() != null)
         {
             database = FindFirstObjectByType<Database>();
@@ -40,19 +49,34 @@ public class HUDController : MonoBehaviour
             database = emptyObject.GetComponent<Database>();
         }*/
 
-		//      if(SceneManager.GetActiveScene().buildIndex ==0) // (GameManager.instance.CheckSceneIndex() == 0) 
-		//      {
-		//	if (DataManager.Instance.fileExist)
-		//	{
-		//		continueGame_btn.SetActive(true);
-		//	}
-		//	else
-		//	{
-		//		continueGame_btn.SetActive(false);
-		//	}
-		//}
+        //      if(SceneManager.GetActiveScene().buildIndex ==0) // (GameManager.instance.CheckSceneIndex() == 0) 
+        //      {
+        //	if (DataManager.Instance.fileExist)
+        //	{
+        //		continueGame_btn.SetActive(true);
+        //	}
+        //	else
+        //	{
+        //		continueGame_btn.SetActive(false);
+        //	}
+        //}
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            outlineEnabled = PlayerPrefs.GetInt("Outline");
+            if(outlineEnabled == 0)
+            {
+                outlineEnabled = 1;
+            }
+            else
+            {
+                outlineEnabled = 0;
+            }
+            OutlineBT();
+        }
+            
+        
 
-        if(continueGame_btn != null)
+        if (continueGame_btn != null)
         {
 			if (PlayerPrefs.GetInt("TutorialComplete") == 1)
 			{
@@ -99,12 +123,6 @@ public class HUDController : MonoBehaviour
         Application.Quit();
     }
 
-    public void SesabBT()
-    {
-        Application.OpenURL("https://www.saude.ba.gov.br/");
-    }
-
-
     public void SetMusicVolume(float musicVolume)
     {
         musicMixer.SetFloat("musicVolume", musicVolume);
@@ -140,4 +158,43 @@ public class HUDController : MonoBehaviour
         //canvasGroup.GetComponent<GameObject>().SetActive(false);
 	}
 
+    #region Menu
+    public void JogosDigitaisBT()
+    {
+        Application.OpenURL("https://portal.ifba.edu.br/lauro-de-freitas/menu-cursos/superior/tec-jogos-digitais/jogos-digitais");
+    }
+
+    public void IFBA_BT()
+    {
+        Application.OpenURL("https://portal.ifba.edu.br/");
+    }
+
+    public void SesabBT()
+    {
+        Application.OpenURL("https://www.saude.ba.gov.br/");
+    }
+
+    public void GovBT()
+    {
+        Application.OpenURL("https://www.gov.br/pt-br");
+    }
+    #endregion
+
+    public void OutlineBT()
+    {
+        if (outlineEnabled == 0)
+        {
+            outlineEnabled = 1;
+            outlineBT.sprite = outlineSelected;
+            outlineTextBT.text = "DESATIVAR  \n BORDA \n (OBJETOS)";
+        }
+        else
+        {
+            outlineEnabled = 0;
+            outlineBT.sprite = outlineDefault;
+            outlineTextBT.text = "ATIVAR \n BORDA \n (OBJETOS)";
+        }      
+        
+        PlayerPrefs.SetInt("Outline", outlineEnabled);
+    }
 }
