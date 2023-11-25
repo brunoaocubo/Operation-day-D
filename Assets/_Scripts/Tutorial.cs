@@ -17,6 +17,7 @@ public class Tutorial : MonoBehaviour
 	[SerializeField] private GameObject UI;
 	[SerializeField] private PlayerController Player;
 	[SerializeField] private GameObject SubCamera;
+	[SerializeField] private Accessibility accessibility;
 
 	private bool hasTools = false;
 	private bool _startTutorial = false;
@@ -25,6 +26,7 @@ public class Tutorial : MonoBehaviour
 	private void Start()
 	{
 		collisionsTutorial[0].enabled = false;
+		Camera.main.backgroundColor = Color.black;
 	}
 
 	private void OnTriggerEnter(Collider other)
@@ -35,7 +37,7 @@ public class Tutorial : MonoBehaviour
 			{
 				//cutsceneTutorial.gameObject.SetActive(true);
 				//cutsceneTutorial.Play();
-				StartCoroutine(WaitCutscene());
+				StartCoroutine(PlaySecondCutsceneTutorial());
 
 				//other.gameObject.transform.localRotation = Quaternion.Euler(0f, Camera.main.transform.rotation.y, 0f);
 				//other.gameObject.transform.position = spawnPointHouse.position;
@@ -72,13 +74,24 @@ public class Tutorial : MonoBehaviour
 		}
 	}
 
-	private IEnumerator WaitCutscene()
+	private IEnumerator PlaySecondCutsceneTutorial()
 	{
 		//timerCount_txt.enabled = true;
 		Player.HandleJoystick.localPosition = Vector3.zero;
 		UI.SetActive(false);
 		SubCamera.SetActive(true);
-		yield return new WaitForSeconds(5f);
+
+		accessibility.OutlineStateIndividual(3, true);
+		yield return new WaitForSeconds(1f);
+		accessibility.OutlineStateIndividual(3, false);
+		yield return new WaitForSeconds(1f);
+		accessibility.OutlineStateIndividual(3, true);
+		yield return new WaitForSeconds(1f);
+		accessibility.OutlineStateIndividual(3, false);
+		yield return new WaitForSeconds(1f);
+		accessibility.OutlineStateIndividual(3, true);
+		yield return new WaitForSeconds(1f);
+
 		collisionsTutorial[0].enabled = false;
 		UI.SetActive(true);
 		SubCamera.SetActive(false);

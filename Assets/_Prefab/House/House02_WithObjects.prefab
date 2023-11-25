@@ -4007,7 +4007,7 @@ GameObject:
   - component: {fileID: 4956689434917957746}
   - component: {fileID: 7784892241565561138}
   - component: {fileID: 7286721376635593520}
-  - component: {fileID: 4303764886071320456}
+  - component: {fileID: 4522017892368240192}
   m_Layer: 0
   m_Name: Porta03
   m_TagString: Untagged
@@ -4115,20 +4115,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleRotation: {x: 0, y: -80, z: 0}
   doorPivot: {fileID: 8994905123383613613}
---- !u!114 &4303764886071320456
+  openDoor_sfx: {fileID: 0}
+--- !u!114 &4522017892368240192
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7138113448207102948}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1253c486f093f4da4a1bb81edbfb5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleRotation: {x: 0, y: -90, z: 0}
-  doorPivot: {fileID: 8994905123383613613}
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.87058824, b: 0, a: 1}
+  outlineWidth: 10
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7264201796038672613
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,7 +5273,6 @@ GameObject:
   - component: {fileID: 454151656433393142}
   - component: {fileID: 2647069435038685789}
   - component: {fileID: 3905739044027390828}
-  - component: {fileID: 5023795160397262623}
   m_Layer: 0
   m_Name: Porta04
   m_TagString: Untagged
@@ -5376,20 +5380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleRotation: {x: 0, y: 90, z: 0}
   doorPivot: {fileID: 3735723656566058943}
---- !u!114 &5023795160397262623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8445282262564969273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1253c486f093f4da4a1bb81edbfb5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angleRotation: {x: 0, y: 80, z: 0}
-  doorPivot: {fileID: 3735723656566058943}
+  openDoor_sfx: {fileID: 0}
 --- !u!1 &8474994663738340263
 GameObject:
   m_ObjectHideFlags: 0
@@ -5918,14 +5909,12 @@ GameObject:
   - component: {fileID: 4609658455953432123}
   - component: {fileID: 2529008396933277837}
   - component: {fileID: 3993639065510111193}
-  - component: {fileID: 3023052580968462541}
-  - component: {fileID: 4196821647983081700}
   m_Layer: 0
   m_Name: Porta01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 123
   m_IsActive: 1
 --- !u!4 &3274810071828640638
 Transform:
@@ -6013,34 +6002,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.64234865, y: 1.9249023, z: 1.7573663}
   m_Center: {x: -0.08792174, y: -0.037548948, z: 0.0050984044}
---- !u!114 &3023052580968462541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8909001356732543171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1253c486f093f4da4a1bb81edbfb5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angleRotation: {x: 0, y: -100, z: 0}
-  doorPivot: {fileID: 8023700823322092000}
---- !u!114 &4196821647983081700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8909001356732543171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1253c486f093f4da4a1bb81edbfb5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angleRotation: {x: 0, y: -100, z: 0}
-  doorPivot: {fileID: 8023700823322092000}
 --- !u!1 &9190274141631091166
 GameObject:
   m_ObjectHideFlags: 0
@@ -6136,7 +6097,7 @@ GameObject:
   - component: {fileID: 1431609870693729926}
   - component: {fileID: 3601852267114696535}
   - component: {fileID: 627134246798962883}
-  - component: {fileID: 3190022231925595790}
+  - component: {fileID: 1789555770870618076}
   m_Layer: 0
   m_Name: Porta05
   m_TagString: Untagged
@@ -6223,20 +6184,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleRotation: {x: 0, y: 30, z: 0}
   doorPivot: {fileID: 767274905483906881}
---- !u!114 &3190022231925595790
-MonoBehaviour:
+  openDoor_sfx: {fileID: 0}
+--- !u!65 &1789555770870618076
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9190616959575691018}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1253c486f093f4da4a1bb81edbfb5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angleRotation: {x: 0, y: 30, z: 0}
-  doorPivot: {fileID: 767274905483906881}
+  serializedVersion: 3
+  m_Size: {x: 0.46637344, y: 1.9249636, z: 1.7574272}
+  m_Center: {x: -0.014800558, y: -0.037548948, z: 0.005090278}
 --- !u!1001 &1061639290837071464
 PrefabInstance:
   m_ObjectHideFlags: 0

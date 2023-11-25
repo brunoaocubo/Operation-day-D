@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a26b9a4d57ff88845917e0c18e44b4ec
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Jost*
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: e1017cc9edce925449d6b83ee635dcb1, type: 3}
+  - {fileID: 12800000, guid: d0891d4d3e6c967409358bfa52d2d17b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

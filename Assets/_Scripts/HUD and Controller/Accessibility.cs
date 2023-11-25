@@ -11,6 +11,8 @@ public class Accessibility : MonoBehaviour
     private int outlineEnabled;
     private void Start()
     {
+
+        /*
         outlineEnabled = PlayerPrefs.GetInt("Outline");
         if(outlineEnabled ==0)
         {
@@ -21,7 +23,7 @@ public class Accessibility : MonoBehaviour
         {
             OutlineState(true);
             accessibilityToggle.isOn = true;
-        }
+        }*/
     }
     public void OutlineState(bool state)
     {
@@ -39,4 +41,21 @@ public class Accessibility : MonoBehaviour
             PlayerPrefs.SetInt("Outline", 0);
         }
     }
+
+	public void OutlineStateIndividual(int outline, bool state)
+	{
+		for (int i = 0; i < outlines.Count; i++)
+		{
+			outlines[outline].enabled = state;
+		}
+/*
+		if (state)
+		{
+			PlayerPrefs.SetInt("Outline", 1);
+		}
+		else
+		{
+			PlayerPrefs.SetInt("Outline", 0);
+		}*/
+	}
 }

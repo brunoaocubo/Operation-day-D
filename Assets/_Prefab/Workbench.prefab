@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 1516257715963464927}
   - component: {fileID: 6597344628565701589}
   - component: {fileID: 8926403972666407852}
+  - component: {fileID: 6098056143311666572}
   m_Layer: 0
   m_Name: Shovel_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6768318893132710142
 Transform:
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143520553289819193}
   m_LocalRotation: {x: -0, y: 0.86824083, z: -0, w: 0.49614304}
-  m_LocalPosition: {x: -0.498, y: 1.254, z: 0.408}
+  m_LocalPosition: {x: -0.688, y: 1.254, z: 0.403}
   m_LocalScale: {x: 0.0353776, y: 0.037589137, z: 0.17227179}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -120,6 +121,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.325325, y: 2.1757646, z: 2.3843575}
   m_Center: {x: 0.24194056, y: 0.58788234, z: 0.69217986}
+--- !u!114 &6098056143311666572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143520553289819193}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.87058824, b: 0, a: 1}
+  outlineWidth: 15
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &478933082586296094
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,7 +153,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6653984849650900510
 Transform:
@@ -143,7 +162,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 478933082586296094}
-  m_LocalRotation: {x: -0, y: -0.9999055, z: -0, w: 0.013749011}
+  m_LocalRotation: {x: 0, y: -0.99990547, z: 0, w: 0.013752868}
   m_LocalPosition: {x: 22.69, y: 0, z: -1.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -172,7 +191,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7317461428871264537
 Transform:
@@ -277,7 +296,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4888649051746958729
 Transform:
@@ -381,7 +400,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1595939187503203357
 Transform:
@@ -464,7 +483,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4465799626447683959
 Transform:
@@ -547,7 +566,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &6882050303726516539
 Transform:
@@ -630,7 +649,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2117748532939846282
 Transform:
@@ -708,12 +727,13 @@ GameObject:
   - component: {fileID: 4534263193059760644}
   - component: {fileID: 6433449981141199565}
   - component: {fileID: 3913810487335573925}
+  - component: {fileID: 7144433334755457743}
   m_Layer: 0
   m_Name: SanitaryWater_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4534263193059760644
 Transform:
@@ -766,6 +786,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolsType: 2
+--- !u!114 &7144433334755457743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986818533956639578}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.87058824, b: 0, a: 1}
+  outlineWidth: 15
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &5206482952525619280
 GameObject:
   m_ObjectHideFlags: 0
@@ -782,7 +820,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7633261185508951295
 Transform:
@@ -865,7 +903,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4169277227170967380
 Transform:
@@ -949,7 +987,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2419693186140525742
 Transform:
@@ -1050,12 +1088,13 @@ GameObject:
   - component: {fileID: 7707044369733925249}
   - component: {fileID: 2901967132862934999}
   - component: {fileID: 8900125324135827931}
+  - component: {fileID: 7164410204998274790}
   m_Layer: 0
   m_Name: Insecticide_Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7008126972977103200
 Transform:
@@ -1158,6 +1197,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.12386496, y: 0.19425909, z: 0.09975156}
   m_Center: {x: -0.0023194868, y: 0.09718115, z: 0.0009077583}
+--- !u!114 &7164410204998274790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6036353345149849591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.87058824, b: 0, a: 1}
+  outlineWidth: 15
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7308510691643950249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1231,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &3397753724265504435
 Transform:
@@ -1255,7 +1312,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5322804632890075449
 Transform:
@@ -1296,7 +1353,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7901013120975669058
 Transform:

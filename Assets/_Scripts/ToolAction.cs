@@ -20,6 +20,15 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] protected GameObject[] toolButton;
 	[SerializeField] private HoldButton[] holdButton;
 
+	[Header("Sounds FX")]
+	[SerializeField] private AudioSource insecticideSpray_sfx;
+	[SerializeField] private AudioSource cleanWater_sfx;
+	[SerializeField] private AudioSource insecticideEquip_sfx;
+	[SerializeField] private AudioSource sanitaryWaterEquip_sfx;
+	[SerializeField] private AudioSource shovelEquip_sfx;
+
+	[SerializeField] protected AudioSource pickupItem_sfx;
+
 	[Header("Quests")]
 	//[SerializeField] private int idQuest;
 	protected QuestController questController;
@@ -76,10 +85,15 @@ public class ToolAction : MonoBehaviour
 	{
 		if(_hitInfo.collider != null) 
 		{
-			if(_hitInfo.collider.TryGetComponent(out DoorRotation door)) 
+			if(_hitInfo.collider.TryGetComponent(out DoorRotation door))
 			{
 				StartCoroutine(door.Rotation());
 			}
+			
+			if(_hitInfo.collider.TryGetComponent(out Outline outline)) 
+			{
+				outline.DesactiveOutline();
+			} 
 		}
 	}
 
@@ -94,12 +108,15 @@ public class ToolAction : MonoBehaviour
 			cameraEffect.ExecuteElasticFov();
 			sprayEffect.SetFloat("SprayRate", 32);
 			insecticideDamageBox.enabled = true;
+			insecticideSpray_sfx.enabled = true;
 		}
 		else
 		{
 			cameraEffect.ReturnDefaultFOV();
 			sprayEffect.SetFloat("SprayRate", 0);
 			insecticideDamageBox.enabled = false;
+			new WaitForEndOfFrame();
+			insecticideSpray_sfx.enabled = false;
 		}
 	}
 	
@@ -111,8 +128,10 @@ public class ToolAction : MonoBehaviour
 			{
 				if (_hitInfo.collider.TryGetComponent(out WaterToxicIdentity waterToxicIdentity))
 				{
-					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
+					_hitInfo.collider.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(waterClean_mat);
+					_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
+					cleanWater_sfx.Play();
 					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
 			}
@@ -137,17 +156,32 @@ public class ToolAction : MonoBehaviour
 
 	public void EquipInsecticide()
 	{
+		//A ordem das linhas é importante
 		SetToolActive(0);
+		if(toolsType == ToolType.Insecticide) 
+		{
+			insecticideEquip_sfx.Play();
+		}
 	}
 
 	public void EquipSanitaryWater()
 	{
+		//A ordem das linhas é importante
 		SetToolActive(1);
+		if (toolsType == ToolType.SanitaryWater)
+		{
+			sanitaryWaterEquip_sfx.Play();
+		}
 	}
 
 	public void EquipShovel()
 	{
+		//A ordem das linhas é importante
 		SetToolActive(2);
+		if (toolsType == ToolType.Shovel)
+		{
+			shovelEquip_sfx.Play();
+		}
 	}
 
 	private void SetToolActive(int index)

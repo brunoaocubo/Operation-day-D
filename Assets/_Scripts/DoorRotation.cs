@@ -8,6 +8,7 @@ public class DoorRotation : MonoBehaviour
 {
 	[SerializeField] private Vector3 angleRotation;
 	[SerializeField] private Transform doorPivot;
+	[SerializeField] private AudioSource openDoor_sfx;
 	
 	public IEnumerator Rotation() 
 	{
@@ -17,6 +18,7 @@ public class DoorRotation : MonoBehaviour
 		}
 
 		doorPivot.DORotate(angleRotation, 1.5f, RotateMode.Fast);
+		openDoor_sfx.Play();
 		yield return new WaitForEndOfFrame();
 	}
 }

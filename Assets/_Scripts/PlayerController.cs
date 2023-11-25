@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 	[Header("Config Player")]
 	[SerializeField] private float moveSpeed = 300f;
 	[SerializeField] private float distanceRay = 1f;
+	[SerializeField] private AudioSource stepFootstep_sfx;
+
+	private ToolType toolType;
 
 	private Rigidbody _rigidbody;
 	private Vector2 _inputVector;
@@ -27,6 +30,7 @@ public class PlayerController : MonoBehaviour
 	private void Awake()
 	{
 		inputController = FindAnyObjectByType<Inputs>();
+	
 	}
 
 	private void Start()
@@ -37,7 +41,7 @@ public class PlayerController : MonoBehaviour
 
 	private void Update()
 	{
-		ToolType toolType = GetComponent<ToolAction>().ToolsType;
+		/*
 		switch (toolType)
 		{
 			case ToolType.None:
@@ -63,7 +67,8 @@ public class PlayerController : MonoBehaviour
 				break;
 			default:
 				break;
-		}
+		}*/
+		toolType = GetComponent<ToolAction>().ToolsType;
 		if(toolType == ToolType.Insecticide) 
 		{
 			_anim.SetBool(_isAttachInsecticide, true);
@@ -73,14 +78,40 @@ public class PlayerController : MonoBehaviour
 			_anim.SetBool(_isAttachInsecticide, false);
 		}
 
-		//Move();
-		if(HandleJoystick.transform.localPosition.magnitude <1) 
+		if(toolType == ToolType.SanitaryWater) 
+		{
+			_anim.SetBool(_isAttachSanitaryWater, true);
+		}
+		else 
+		{
+			_anim.SetBool(_isAttachSanitaryWater, false);
+		}
+
+		if (toolType == ToolType.Shovel)
+		{
+			_anim.SetBool(_isAttachShovel, true);
+		}
+		else
+		{
+			_anim.SetBool(_isAttachShovel, false);
+		}
+
+		if (HandleJoystick.transform.localPosition.magnitude <1) 
 		{
 			_inputVector = Vector2.zero;
 		}
 		else 
 		{
 			_inputVector = inputController.GetMovementVector2NormalizedJoystick();
+		}
+
+		if(_rigidbody.velocity.magnitude > 1) 
+		{
+			stepFootstep_sfx.enabled = true;
+		}
+		else 
+		{
+			stepFootstep_sfx.enabled = false;
 		}
 	}
 
@@ -130,6 +161,8 @@ public class PlayerController : MonoBehaviour
 				_rigidbody.AddForce(force);
 			}
 		}
+		
+		
 	}
 
 	public void CheckHouseID() 
