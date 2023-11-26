@@ -10,15 +10,29 @@ public class DoorRotation : MonoBehaviour
 	[SerializeField] private Transform doorPivot;
 	[SerializeField] private AudioSource openDoor_sfx;
 	
-	public IEnumerator Rotation() 
+	public void RotationWithSmooth() 
 	{
-		if (doorPivot.rotation.y == angleRotation.y)
+		if (doorPivot.rotation.x == angleRotation.x && 
+			doorPivot.rotation.y == angleRotation.y &&
+			doorPivot.rotation.z == angleRotation.z)
 		{
-			yield break;
+			return;
 		}
 
 		doorPivot.DORotate(angleRotation, 1.5f, RotateMode.Fast);
 		openDoor_sfx.Play();
-		yield return new WaitForEndOfFrame();
+	}
+	
+	public void Rotation() 
+	{
+		if (doorPivot.rotation.x == angleRotation.x &&
+		doorPivot.rotation.y == angleRotation.y &&
+	    doorPivot.rotation.z == angleRotation.z)
+		{
+			return;
+		}
+
+		doorPivot.transform.Rotate(angleRotation);
+		openDoor_sfx.Play();
 	}
 }

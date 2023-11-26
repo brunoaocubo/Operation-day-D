@@ -87,7 +87,7 @@ public class ToolAction : MonoBehaviour
 		{
 			if(_hitInfo.collider.TryGetComponent(out DoorRotation door))
 			{
-				StartCoroutine(door.Rotation());
+				door.RotationWithSmooth();
 			}
 			
 			if(_hitInfo.collider.TryGetComponent(out Outline outline)) 

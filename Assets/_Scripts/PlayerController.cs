@@ -16,85 +16,32 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private float distanceRay = 1f;
 	[SerializeField] private AudioSource stepFootstep_sfx;
 
-	private ToolType toolType;
+	private ToolAction toolAction;
 
 	private Rigidbody _rigidbody;
 	private Vector2 _inputVector;
 	private Ray _ray;
 	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
-	private Animator _anim;
+	[SerializeField] private Animator _anim;
 
 	public RectTransform HandleJoystick { get => handleJoystick; set => handleJoystick = value; }
 
 	private void Awake()
 	{
 		inputController = FindAnyObjectByType<Inputs>();
-	
+		toolAction = GetComponent<ToolAction>();
 	}
 
 	private void Start()
 	{
 		_rigidbody = GetComponentInChildren<Rigidbody>();
-		_anim = GetComponent<Animator>();
+		_anim = GetComponentInChildren<Animator>();
 	}
 
 	private void Update()
 	{
-		/*
-		switch (toolType)
-		{
-			case ToolType.None:
-				_anim.SetBool(_isAttachInsecticide, false);
-				_anim.SetBool(_isAttachSanitaryWater, false);
-				_anim.SetBool(_isAttachShovel, false);
-				break;
-			case ToolType.Insecticide:
-				_anim.SetBool(_isAttachInsecticide, true);
-				_anim.SetBool(_isAttachSanitaryWater, false);
-				_anim.SetBool(_isAttachShovel, false);
-				break;
-			case ToolType.SanitaryWater:
-				_anim.SetBool(_isAttachSanitaryWater, true);
-				_anim.SetBool(_isAttachInsecticide, false);
-				_anim.SetBool(_isAttachShovel, false);
-
-				break;
-			case ToolType.Shovel:
-				_anim.SetBool(_isAttachShovel, true);
-				_anim.SetBool(_isAttachInsecticide, false);
-				_anim.SetBool(_isAttachSanitaryWater, false);
-				break;
-			default:
-				break;
-		}*/
-		toolType = GetComponent<ToolAction>().ToolsType;
-		if(toolType == ToolType.Insecticide) 
-		{
-			_anim.SetBool(_isAttachInsecticide, true);
-		}
-		else
-		{
-			_anim.SetBool(_isAttachInsecticide, false);
-		}
-
-		if(toolType == ToolType.SanitaryWater) 
-		{
-			_anim.SetBool(_isAttachSanitaryWater, true);
-		}
-		else 
-		{
-			_anim.SetBool(_isAttachSanitaryWater, false);
-		}
-
-		if (toolType == ToolType.Shovel)
-		{
-			_anim.SetBool(_isAttachShovel, true);
-		}
-		else
-		{
-			_anim.SetBool(_isAttachShovel, false);
-		}
+		ChangeAnimation();
 
 		if (HandleJoystick.transform.localPosition.magnitude <1) 
 		{
@@ -163,6 +110,36 @@ public class PlayerController : MonoBehaviour
 		}
 		
 		
+	}
+
+	private void ChangeAnimation() 
+	{
+		if (toolAction.ToolsType == ToolType.Insecticide)
+		{
+			_anim.SetBool(_isAttachInsecticide, true);
+		}
+		else
+		{
+			_anim.SetBool(_isAttachInsecticide, false);
+		}
+
+		if (toolAction.ToolsType == ToolType.SanitaryWater)
+		{
+			_anim.SetBool(_isAttachSanitaryWater, true);
+		}
+		else
+		{
+			_anim.SetBool(_isAttachSanitaryWater, false);
+		}
+
+		if (toolAction.ToolsType == ToolType.Shovel)
+		{
+			_anim.SetBool(_isAttachShovel, true);
+		}
+		else
+		{
+			_anim.SetBool(_isAttachShovel, false);
+		}
 	}
 
 	public void CheckHouseID() 
