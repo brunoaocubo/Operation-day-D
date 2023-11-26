@@ -38,8 +38,12 @@ public class DialogueController : MonoBehaviour
    
     [Header("Dialogues")]
     public List<Dialogue> dialogues;
-   
-    private void Awake()
+
+    [SerializeField] private GameObject canvasHUD;
+    [SerializeField] private GameObject canvasInputs;
+    [SerializeField] private RectTransform handleJoystick;
+
+	private void Awake()
     {
         backBT.interactable = false;
         if(dialogues.Count>0)
@@ -151,7 +155,10 @@ public class DialogueController : MonoBehaviour
 
     public void ShowDialogue()
     {
-        currentMessage = 0;
+		canvasHUD.SetActive(false);
+        canvasInputs.SetActive(false);
+        handleJoystick.localPosition = Vector3.zero;
+		currentMessage = 0;
         currentDialogue = 0;
         backBT.interactable = false;
         nextBT.interactable = true;
@@ -168,7 +175,7 @@ public class DialogueController : MonoBehaviour
         {
             SceneManager.LoadScene(nextLevel);
         }
-    }
+    } 
     //dialogos[dialogoAtual].messagens[messagemAtual]
 }
 

@@ -7,7 +7,7 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private int nextLevel;
     [SerializeField] private bool loadOtherLevel;
 
-    [SerializeField] private Collider col;
+    //[SerializeField] private Collider col;
     [SerializeField] private DialogueController dialogueController;
     [SerializeField] private Dialogue[] dialogues;
 
@@ -15,6 +15,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Debug.Log("Entrou");
             if(!dialogueController.dialogueIsActive)
             {
                 dialogueController.loadOtherLevel = this.loadOtherLevel;
@@ -24,8 +25,10 @@ public class DialogueTrigger : MonoBehaviour
                     dialogueController.dialogues.Add(dialogues[i]);
                 }
                 dialogueController.ShowDialogue();
+				Debug.Log("Passou");
 
-                if(loadOtherLevel)
+
+				if (loadOtherLevel)
                 {
                     dialogueController.nextLevel = this.nextLevel;
                 }
