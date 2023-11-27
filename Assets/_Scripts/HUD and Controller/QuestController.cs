@@ -15,7 +15,8 @@ public class QuestController : MonoBehaviour, IQuestController
     [SerializeField] private Quest[] questList;
 
     private int questsRemaing;
-    private int questsCompleted = 0; 
+    private int questsCompleted = 0;
+    private bool isLevelComplete = false;
 
 
     private void Start()
@@ -65,9 +66,10 @@ public class QuestController : MonoBehaviour, IQuestController
             i++;
         }
 
-        if(questsCompleted >= questList.Length)
+        if(questsCompleted >= questList.Length && !isLevelComplete)
         {
-            StartCoroutine(StageCompleted());
+			isLevelComplete = true;
+			StartCoroutine(StageCompleted());
             GameManager.instance.UpdateHouseState(houseController.NameCurrentHouse, 1);
         }
     }
@@ -93,10 +95,12 @@ public class QuestController : MonoBehaviour, IQuestController
             Debug.Log("Você será movido em: " + i);
             yield return new WaitForSeconds(1f);
         }
-        if(GameManager.levelsComplete >= 7) 
+
+		if (GameManager.levelsComplete >= 7) 
         {
             nextLevel = 10;
 		}
+
 		GameManager.instance.LoadScene(nextLevel);
 	}
 }

@@ -23,6 +23,7 @@ public class Flyer : MonoBehaviour
 
     private void Start()
     {
+        UpdateFlyer();
         for(int i=0; i<flyerCollected.Length; i++)
         {
             if(i < GameManager.levelsComplete - 1) 

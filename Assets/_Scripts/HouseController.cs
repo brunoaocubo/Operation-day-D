@@ -11,6 +11,7 @@ public class HouseController : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI timerCount_txt;
 	[SerializeField] private float timerCount;
 	[SerializeField] private AudioSource gameOver_music;
+	[SerializeField] private int currentScene;
 	private bool _finishTutorial;
 
 	public string NameCurrentHouse { get => nameCurrentHouse; }
@@ -51,6 +52,6 @@ public class HouseController : MonoBehaviour
 	IEnumerator RestartLevel() 
 	{
 		yield return new WaitForSeconds(4f);
-		SceneManager.LoadScene(3);
+		SceneManager.LoadScene(currentScene);
 	}
 }

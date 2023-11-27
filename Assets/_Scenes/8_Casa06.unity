@@ -514,6 +514,7 @@ MonoBehaviour:
   timerCount_txt: {fileID: 7816340768900448690}
   timerCount: 240
   gameOver_music: {fileID: 200883026}
+  currentScene: 8
 --- !u!1 &229871057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2059,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102137433}
-  m_LocalRotation: {x: 0.7026911, y: -0.07890061, z: -0.07890061, w: -0.7026911}
+  m_LocalRotation: {x: 0.7070576, y: -0.008342086, z: -0.008342086, w: -0.7070576}
   m_LocalPosition: {x: -2.1770484, y: 1.3060786, z: -6.635071}
   m_LocalScale: {x: 18.778076, y: 87.306046, z: 131.85045}
   m_ConstrainProportionsScale: 0
@@ -2066,7 +2067,7 @@ Transform:
   - {fileID: 2267391171391962992}
   m_Father: {fileID: 8267399944271919195}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 12.813}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 1.352}
 --- !u!1001 &1205919933
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27664,8 +27665,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.010501798, y: 0.055235878, z: 0.020001687}
-  m_Center: {x: 0.0047499444, y: -0.00000017745815, z: -8.6853964e-23}
+  m_Size: {x: 0.009882752, y: 0.05523588, z: 0.02000169}
+  m_Center: {x: 0.0044404217, y: -0.00000018154748, z: 6.451389e-16}
 --- !u!4 &5998210285476840295
 Transform:
   m_ObjectHideFlags: 0
