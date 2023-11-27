@@ -17,4 +17,4 @@ MonoBehaviour:
   description: Colete todos os 6 panfletos
   currentValue: 0
   ammountToComplete: 6
-  isCompleted: 1
+  isCompleted: 0

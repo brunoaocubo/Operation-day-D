@@ -17,8 +17,11 @@ public class HUDController : MonoBehaviour
     [Header("Link Objects UI")]
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider musicSlider;
+    [SerializeField] private Slider sensibilitySlider;
     [SerializeField] private GameObject mapUI_img;
     [SerializeField] private GameObject questUI_img;
+    [SerializeField] private GameObject flyerBT;
+
 
     [Header("Mixers")]
     [SerializeField] private AudioMixer musicMixer;
@@ -91,6 +94,8 @@ public class HUDController : MonoBehaviour
 
 		sfxSlider.value = PlayerPrefs.GetFloat("effectVolume");
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        //sensibilitySlider.value = PlayerPrefs.GetFloat("sensibility");
+        
     }
 
     public void MapActive()
@@ -106,6 +111,7 @@ public class HUDController : MonoBehaviour
         openQuests = !openQuests;
         mapUI_img.SetActive(openMap);
         questUI_img.SetActive(openQuests);
+        flyerBT.SetActive(!openQuests);
     }
 
     public void PlayBT()
@@ -196,5 +202,15 @@ public class HUDController : MonoBehaviour
         }      
         
         PlayerPrefs.SetInt("Outline", outlineEnabled);
+    }
+
+    public void SensibilitySlider(float value)
+    {
+        PlayerPrefs.SetFloat("sensibility", value);
+    }
+
+    public void LoadScene(int value)
+    {
+        SceneManager.LoadScene(value);
     }
 }

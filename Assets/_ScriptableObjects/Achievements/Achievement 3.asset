@@ -17,4 +17,4 @@ MonoBehaviour:
   description: Fale com 3 pessoas
   currentValue: 0
   ammountToComplete: 3
-  isCompleted: 1
+  isCompleted: 0
