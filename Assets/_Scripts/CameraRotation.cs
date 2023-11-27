@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
-	[SerializeField] [Range(0,10)] private float rotationSpeed = 5.0f;
+	[Range(0,10)] private float rotationSpeed = 5.0f;
 	[SerializeField] private float rotationSensitivity = 1.0f;
 
 	[Header("Min/Max Angle")]

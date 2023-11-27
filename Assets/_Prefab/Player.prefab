@@ -59,7 +59,6 @@ Transform:
   m_LocalScale: {x: 1.0029873, y: 0.94098157, z: 1.0595943}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8001617397775099990}
   - {fileID: 9139943306691296853}
   m_Father: {fileID: 7095501747790956690}
   m_RootOrder: -1
@@ -2483,12 +2482,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4830076508336827536}
-  m_LocalRotation: {x: -0.021154396, y: -0.95905834, z: -0.10745515, w: -0.26117635}
-  m_LocalPosition: {x: 0.00017726194, y: 0.0017327965, z: -0.00002463017}
-  m_LocalScale: {x: 0.009789535, y: 0.010423681, z: 0.009798492}
+  m_LocalRotation: {x: 0.47514677, y: -0.19067295, z: 0.06423616, w: 0.8565939}
+  m_LocalPosition: {x: 0.19939995, y: 1.3947997, z: 0.21099725}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6164860126801515364}
+  m_Father: {fileID: 240576882031269942}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 56.983, y: -29.175, z: -7.503}
 --- !u!136 &181383580685229835
@@ -2826,7 +2825,6 @@ Transform:
   m_LocalScale: {x: 1.0029873, y: 0.94098157, z: 1.0595943}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1154483581131872018}
   - {fileID: 4394001705522022548}
   m_Father: {fileID: 1920953124051256731}
   m_RootOrder: -1
@@ -3389,12 +3387,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6186650011161510485}
-  m_LocalRotation: {x: -0.1319087, y: 0.9384496, z: 0.19482036, w: -0.25289792}
-  m_LocalPosition: {x: -0.000013618271, y: 0.0018368715, z: -0.00014497698}
-  m_LocalScale: {x: 0.00984918, y: 0.010328799, z: 0.009823784}
+  m_LocalRotation: {x: 0.39718553, y: 0.26074648, z: -0.16083819, w: 0.86509305}
+  m_LocalPosition: {x: -0.21600062, y: 1.3939999, z: 0.22700363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6623779636009066183}
+  m_Father: {fileID: 240576882031269942}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 50.451, y: 30.522, z: -6.416}
 --- !u!136 &5051925335130675631
@@ -3695,7 +3693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cc73e39c56ea6741be88718f4bc3362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 5
   rotationSensitivity: 2
   verticalAngle: {x: -80, y: 80}
   horizontalAngle: {x: -9999, y: 9999}
@@ -4049,7 +4046,7 @@ MonoBehaviour:
   insecticideDamageBox: {fileID: 717963524533220178}
   sprayEffect: {fileID: 4981999644448362954}
   waterClean_mat: {fileID: 2100000, guid: df1d7eb79b132414fb565347617cabd9, type: 2}
-  clayClean_mat: {fileID: 0}
+  clay_mat: {fileID: 0}
   tools:
   - {fileID: 5383324162822703094}
   - {fileID: 1328529017615997020}
@@ -4065,6 +4062,7 @@ MonoBehaviour:
   insecticideEquip_sfx: {fileID: 465666182154762805}
   sanitaryWaterEquip_sfx: {fileID: 3267206408444068503}
   shovelEquip_sfx: {fileID: 2375762750024404715}
+  shovelObstruct_sfx: {fileID: 0}
   pickupItem_sfx: {fileID: 742777648235108279}
   cameraEffect: {fileID: 7939851572894259732}
 --- !u!54 &8559568477444439981
@@ -5039,6 +5037,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4831631711721308165}
+  - {fileID: 1154483581131872018}
+  - {fileID: 8001617397775099990}
   - {fileID: 2948765338399221285}
   m_Father: {fileID: 4409970046637922747}
   m_RootOrder: -1

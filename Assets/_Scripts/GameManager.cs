@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
 
+
 	private void Awake()
 	{
 #if !UNITY_EDITOR
@@ -47,5 +48,10 @@ public class GameManager : MonoBehaviour
 	public int CheckSceneIndex() 
 	{
 		return SceneManager.GetActiveScene().buildIndex;
+	}
+
+	public void UpdateHouseState(string houseNumber, int state) 
+	{
+		PlayerPrefs.SetInt(houseNumber, state);
 	}
 }

@@ -6,6 +6,7 @@ using TMPro;
 public class QuestController : MonoBehaviour, IQuestController
 {
     [SerializeField] private int nextLevel;
+    [SerializeField] private HouseController houseController;
 
     [Header("Link Objects/UI")]
     [SerializeField] private TextMeshProUGUI questsProgressUI;
@@ -15,6 +16,7 @@ public class QuestController : MonoBehaviour, IQuestController
 
     private int questsRemaing;
     private int questsCompleted = 0; 
+
 
     private void Start()
     {
@@ -66,6 +68,7 @@ public class QuestController : MonoBehaviour, IQuestController
         if(questsCompleted >= questList.Length)
         {
             StartCoroutine(StageCompleted());
+            GameManager.instance.UpdateHouseState(houseController.NameCurrentHouse, 1);
         }
     }
 

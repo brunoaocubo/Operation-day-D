@@ -13,7 +13,7 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] private BoxCollider insecticideDamageBox;
 	[SerializeField] private VisualEffect sprayEffect;
 	[SerializeField] private Material waterClean_mat;
-	[SerializeField] private Material clayClean_mat;
+	[SerializeField] private Material clay_mat;
 
 	[Header("Tools Settings")]
 	[SerializeField] private GameObject[] tools;
@@ -26,6 +26,7 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] private AudioSource insecticideEquip_sfx;
 	[SerializeField] private AudioSource sanitaryWaterEquip_sfx;
 	[SerializeField] private AudioSource shovelEquip_sfx;
+	[SerializeField] private AudioSource shovelObstruct_sfx;
 
 	[SerializeField] protected AudioSource pickupItem_sfx;
 
@@ -102,6 +103,10 @@ public class ToolAction : MonoBehaviour
 		if (holdButton[0].IsClicked)
 		{
 			cameraEffect.ExecuteElasticEffect();
+			if (_hitInfo.collider.GetComponentInParent<Outline>()!= null)
+			{
+				_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
+			}
 		}
 		if (holdButton[0].IsPressed)
 		{
@@ -126,11 +131,18 @@ public class ToolAction : MonoBehaviour
 		{
 			if (_hitInfo.collider != null)
 			{
-				if (_hitInfo.collider.TryGetComponent(out WaterToxicIdentity waterToxicIdentity))
+				if (_hitInfo.collider.gameObject.layer != 11)
+				{
+					return;
+				}
+				if (_hitInfo.collider.TryGetComponent(out WaterIdentity waterToxicIdentity))
 				{
 					_hitInfo.collider.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(waterClean_mat);
-					_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
+					if (_hitInfo.collider.GetComponentInParent<Outline>() != null)
+					{
+						_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
+					}
 					cleanWater_sfx.Play();
 					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
@@ -144,10 +156,19 @@ public class ToolAction : MonoBehaviour
 		{
 			if (_hitInfo.collider != null)
 			{
-				if (_hitInfo.collider.TryGetComponent(out WaterToxicIdentity waterToxicIdentity))
+				if(_hitInfo.collider.gameObject.layer != 12) 
+				{
+					return;
+				}
+				if (_hitInfo.collider.TryGetComponent(out WaterIdentity waterToxicIdentity))
 				{
 					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
-					_hitInfo.collider.GetComponent<Renderer>().material = new Material(clayClean_mat);
+					_hitInfo.collider.GetComponent<Renderer>().material = new Material(clay_mat);
+					if (_hitInfo.collider.GetComponentInParent<Outline>() != null)
+					{
+						_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
+					}
+					shovelObstruct_sfx.Play();
 					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
 			}
