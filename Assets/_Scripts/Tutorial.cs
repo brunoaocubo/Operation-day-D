@@ -19,7 +19,7 @@ public class Tutorial : MonoBehaviour
 
 	private void Awake()
 	{
-		GameManager.levelsComplete = 2;
+		GameManager.levelsComplete = 0;
 	}
 
 	private void Start()

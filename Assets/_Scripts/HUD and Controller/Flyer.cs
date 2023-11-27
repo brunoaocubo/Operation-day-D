@@ -25,50 +25,54 @@ public class Flyer : MonoBehaviour
     {
         for(int i=0; i<flyerCollected.Length; i++)
         {
-            if(i<GameManager.levelsComplete - 1) 
+            if(i < GameManager.levelsComplete - 1) 
             {
 				flyerCollected[i] = 1;
             }
         }
     }
-    public void UpdateFlyer(int value)
+
+    public void NextFlyerBT()
     {
-
-        if(value == -1 && currentFlyer>0)
-        {
-            currentFlyer += value;
-            flyerNextBT.interactable = true;
-        }
-
-        if(value == 1 && currentFlyer<5)
-        {
-            currentFlyer += value;
-            flyerBackBT.interactable = true;
-        }
-
-        if (currentFlyer ==0)
-        {
-            flyerBackBT.interactable = false;
-        }
-
-        if(currentFlyer==5)
-        {
-            flyerNextBT.interactable = false;
-        }
-
-        flyerText.text = "Panfletos: " + (currentFlyer+1) + "/6";
-        if(flyerCollected[currentFlyer] == 1)
+        if (currentFlyer < 5)
         {
             currentFlyer++;
-            flyerImageUI.sprite = flyerSprite[currentFlyer];
+            UpdateFlyer();
+            flyerBackBT.interactable = true;
+            if(currentFlyer>=5)
+            {
+                flyerNextBT.interactable = false;
+            }
+        }
+    }
+
+
+    public void BackFlyer()
+    {
+        if(currentFlyer>0)
+        {
+            currentFlyer--;
+            flyerNextBT.interactable = true;
+            UpdateFlyer();
+            if(currentFlyer<=0)
+            {
+                flyerBackBT.interactable = false;
+            }
+        }
+    }
+
+    public void UpdateFlyer()
+    {
+
+        flyerText.text = "Panfletos: " + (currentFlyer+1) + "/6";
+        flyerImageUI.sprite = flyerSprite[currentFlyer];
+        if(flyerCollected[currentFlyer] == 1)
+        {
             flyerBlockImage.SetActive(false);
         }
         else
         {
             flyerBlockImage.SetActive(true);
-            currentFlyer--;
-        }
-
-        
+        }    
     }
 }

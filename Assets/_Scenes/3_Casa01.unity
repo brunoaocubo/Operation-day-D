@@ -11746,7 +11746,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyerImageUI: {fileID: 7055866784582030674}
   flyerCanvas: {fileID: 8743621260205522910}
-  flyerBlockImage: {fileID: 4008492517462031346}
+  flyerBlockImage: {fileID: 7354006462436167673}
   flyerText: {fileID: 877070300774580536}
   flyerBackBT: {fileID: 3948449863892606194}
   flyerNextBT: {fileID: 4785468265854470268}
@@ -14772,8 +14772,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2189216927573096153}
         m_TargetAssemblyTypeName: Flyer, Assembly-CSharp
-        m_MethodName: UpdateFlyer
-        m_Mode: 3
+        m_MethodName: BackFlyer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16007,8 +16007,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2189216927573096153}
         m_TargetAssemblyTypeName: Flyer, Assembly-CSharp
-        m_MethodName: UpdateFlyer
-        m_Mode: 3
+        m_MethodName: NextFlyerBT
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -20190,7 +20190,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9e8bfe16999c0fb48adf7c5f711794a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

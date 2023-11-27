@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1590456433}
-  m_IndirectSpecularColor: {r: 0.2882459, g: 0.50846714, b: 0.68108475, a: 1}
+  m_IndirectSpecularColor: {r: 0.8642713, g: 0.9113741, b: 0.8935381, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -27585,7 +27585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyerImageUI: {fileID: 7055866784329452601}
   flyerCanvas: {fileID: 8743621260489549493}
-  flyerBlockImage: {fileID: 4008492517781709465}
+  flyerBlockImage: {fileID: 7354006462185428626}
   flyerText: {fileID: 877070301092173907}
   flyerBackBT: {fileID: 3948449863608305049}
   flyerNextBT: {fileID: 4785468266107310359}
@@ -31305,8 +31305,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2189216927356170162}
         m_TargetAssemblyTypeName: Flyer, Assembly-CSharp
-        m_MethodName: UpdateFlyer
-        m_Mode: 3
+        m_MethodName: BackFlyer
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -32798,8 +32798,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2189216927356170162}
         m_TargetAssemblyTypeName: Flyer, Assembly-CSharp
-        m_MethodName: UpdateFlyer
-        m_Mode: 3
+        m_MethodName: NextFlyerBT
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -37957,7 +37957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 9e8bfe16999c0fb48adf7c5f711794a4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
