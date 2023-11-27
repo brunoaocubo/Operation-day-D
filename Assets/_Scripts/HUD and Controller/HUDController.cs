@@ -116,7 +116,8 @@ public class HUDController : MonoBehaviour
 
     public void PlayBT()
     {
-        GameManager.instance.LoadScene(1);
+        GameManager.levelsComplete = 0;
+        GameManager.instance.LoadScene(9);
     }
 
     public void ContinueGame() 

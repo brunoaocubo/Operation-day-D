@@ -13,6 +13,11 @@ public class DataManager : MonoBehaviour
 
 	public bool fileExist;
 
+	private void Start()
+	{
+		PlayerPrefs.SetFloat("sensibility", 1f);
+	}
+
 	/*
 	private void Awake()
 	{

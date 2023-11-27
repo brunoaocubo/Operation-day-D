@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idQuest: 20
   currentValue: 0
-  amount: 6
+  amount: 3
   stateQuest: 0
   questText: "Jogue areia nos recipientes com \xE1gua parada"

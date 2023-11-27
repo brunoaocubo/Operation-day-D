@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idQuest: 16
   currentValue: 0
-  amount: 1
+  amount: 4
   stateQuest: 0
   questText: Elimine as larvas

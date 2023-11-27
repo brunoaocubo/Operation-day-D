@@ -25,7 +25,10 @@ public class Flyer : MonoBehaviour
     {
         for(int i=0; i<flyerCollected.Length; i++)
         {
-            flyerCollected[i] = PlayerPrefs.GetInt("flyer");
+            if(i<GameManager.levelsComplete - 1) 
+            {
+				flyerCollected[i] = 1;
+            }
         }
     }
     public void UpdateFlyer(int value)
@@ -56,12 +59,14 @@ public class Flyer : MonoBehaviour
         flyerText.text = "Panfletos: " + (currentFlyer+1) + "/6";
         if(flyerCollected[currentFlyer] == 1)
         {
+            currentFlyer++;
             flyerImageUI.sprite = flyerSprite[currentFlyer];
             flyerBlockImage.SetActive(false);
         }
         else
         {
             flyerBlockImage.SetActive(true);
+            currentFlyer--;
         }
 
         

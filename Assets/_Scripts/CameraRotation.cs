@@ -15,6 +15,7 @@ public class CameraRotation : MonoBehaviour
 	private void Update()
 	{
 		ExecuteRotation();
+		rotationSensitivity = PlayerPrefs.GetFloat("sensibility");
 	}
 
 	private void ExecuteRotation()

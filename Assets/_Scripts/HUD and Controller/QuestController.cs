@@ -23,20 +23,20 @@ public class QuestController : MonoBehaviour, IQuestController
         questsRemaing = questList.Length;
         questsProgressUI.text = "Missões: " + questsCompleted + "/" + questsRemaing;
 
-        for(int i=0; i<questList.Length; i++)
+        for (int i = 0; i < questList.Length; i++)
         {
-			questList[i].currentValue = 0;
-			if (questList[i].currentValue >= questList[i].amount) 
+            //questList[i].currentValue = 0;
+            if (questList[i].currentValue >= questList[i].amount)
             {
                 questList[i].stateQuest = true;
             }
-            else 
+            else
             {
                 questList[i].stateQuest = false;
             }
 
-			quest_txt[i].text = questList[i].currentValue + "/" + questList[i].amount + " " + questList[i].questText;
-		}
+            quest_txt[i].text = questList[i].currentValue + "/" + questList[i].amount + " " + questList[i].questText;
+        }
     }
     public void UpdateProgressQuest(int questID, int plus)
     {
@@ -87,11 +87,16 @@ public class QuestController : MonoBehaviour, IQuestController
 
     IEnumerator StageCompleted()
     {
+        GameManager.levelsComplete += 1;
         for(int i=0; i<3; i++)
         {
             Debug.Log("Você será movido em: " + i);
             yield return new WaitForSeconds(1f);
         }
-        GameManager.instance.LoadScene(nextLevel);
-    }
+        if(GameManager.levelsComplete >= 7) 
+        {
+            nextLevel = 10;
+		}
+		GameManager.instance.LoadScene(nextLevel);
+	}
 }

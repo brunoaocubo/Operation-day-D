@@ -17,6 +17,11 @@ public class Tutorial : MonoBehaviour
 
 	private bool hasTools = false;
 
+	private void Awake()
+	{
+		GameManager.levelsComplete = 2;
+	}
+
 	private void Start()
 	{
 		collisionsTutorial[0].enabled = false;

@@ -26,9 +26,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/6_Casa04.unity
     guid: 961e360e46d2735409b0a649f2207d3d
-  - enabled: 0
-    path: Assets/_Scenes/Prototype/level 1.unity
-    guid: 322b3c3e7af055f4895060bbb6feb5be
+  - enabled: 1
+    path: Assets/_Scenes/7_Casa05.unity
+    guid: d2bf3b88fd1fef54f9953f549314cf9f
+  - enabled: 1
+    path: Assets/_Scenes/8_Casa06.unity
+    guid: 3ff08555769b7614ba0491447fc4cb40
+  - enabled: 1
+    path: Assets/_Scenes/9_CutsceneIntro.unity
+    guid: a9748f2a2724ac34fb63080929bef050
+  - enabled: 1
+    path: Assets/_Scenes/10_CutsceneFim.unity
+    guid: 7502d069b01b6e042bdd89370ee98c26
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 7cf4b5b71b1683141a9c8694e730c9c3,
       type: 2}

@@ -46,10 +46,10 @@ public class DialogueController : MonoBehaviour
 	private void Awake()
     {
         backBT.interactable = false;
-        if(dialogues.Count>0)
-        {
-            UpdateParameters(dialogues[0]);
-        }
+        //if(dialogues.Count>0)
+        //{
+        //    UpdateParameters(dialogues[0]);
+        //}
     }
 
     public void UpdateParameters(Dialogue dialogue)

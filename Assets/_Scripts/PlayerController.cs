@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] private RectTransform handleJoystick;
 
 	[Header("Config Player")]
-	[SerializeField] private float moveSpeed = 300f;
+	[SerializeField] private float moveSpeed = 500f;
 	[SerializeField] private float distanceRay = 1f;
 	[SerializeField] private AudioSource stepFootstep_sfx;
 

@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 1548244720728648013}
   - component: {fileID: 9015457692186195642}
   - component: {fileID: 151451054397515757}
-  m_Layer: 0
+  - component: {fileID: 4489490911278943610}
+  m_Layer: 12
   m_Name: "C\xEDrculo"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +106,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6397852, y: 0.266782, z: 0.6397852}
   m_Center: {x: 0, y: -0.036565453, z: 0}
+--- !u!114 &4489490911278943610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363311135822400447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe373e6c559e85478ed7265e290bfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 15
 --- !u!1 &5424791908815591177
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +131,7 @@ GameObject:
   - component: {fileID: 7797564760061566625}
   - component: {fileID: 8577776906284082778}
   - component: {fileID: 3260694278250288901}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VPlanta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +233,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6142279244806950446}
+  - component: {fileID: 2436081775515797805}
   m_Layer: 0
   m_Name: Recipient Plant.4
   m_TagString: Untagged
@@ -241,5 +256,23 @@ Transform:
   - {fileID: 344174822602884192}
   - {fileID: 8958842294056348065}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2436081775515797805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8492785085603743686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.88374794, b: 0, a: 1}
+  outlineWidth: 15
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []

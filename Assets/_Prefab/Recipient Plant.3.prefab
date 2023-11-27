@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8904618702090280985}
+  - component: {fileID: 322977359091827907}
   m_Layer: 0
   m_Name: Recipient Plant.3
   m_TagString: Untagged
@@ -31,8 +32,26 @@ Transform:
   - {fileID: 9214726205849581783}
   - {fileID: 208972463422521896}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &322977359091827907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163338955815142574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 1
+  outlineColor: {r: 1, g: 0.88374794, b: 0, a: 1}
+  outlineWidth: 15
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &458800283651064631
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +64,7 @@ GameObject:
   - component: {fileID: 4761945726731731086}
   - component: {fileID: 7820017617932618599}
   - component: {fileID: 8427996467660130500}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: VPlanta
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +169,8 @@ GameObject:
   - component: {fileID: 1783330321079470368}
   - component: {fileID: 8557817992659234888}
   - component: {fileID: 4915807360955340111}
-  m_Layer: 0
+  - component: {fileID: 5522368911471159187}
+  m_Layer: 12
   m_Name: "C\xEDrculo"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -243,3 +263,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.6397852, y: 0.21448526, z: 0.6397852}
   m_Center: {x: 0, y: -0.013789043, z: 0}
+--- !u!114 &5522368911471159187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585214835420424724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfe373e6c559e85478ed7265e290bfc8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questID: 15
