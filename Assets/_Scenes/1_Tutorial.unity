@@ -9477,6 +9477,11 @@ PrefabInstance:
       objectReference: {fileID: 112336662}
     - target: {fileID: 3377311799265294779, guid: 548dd99b1b1f0934abdc2f41f458b411,
         type: 3}
+      propertyPath: textSlider
+      value: 
+      objectReference: {fileID: 6269863586513296340}
+    - target: {fileID: 3377311799265294779, guid: 548dd99b1b1f0934abdc2f41f458b411,
+        type: 3}
       propertyPath: outlines.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -9757,6 +9762,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6269863586513296338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6269863586513296340 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 55793328165991541, guid: 548dd99b1b1f0934abdc2f41f458b411,
+    type: 3}
+  m_PrefabInstance: {fileID: 6269863586513296338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6288811838976700484 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2088904311560115597, guid: 548dd99b1b1f0934abdc2f41f458b411,

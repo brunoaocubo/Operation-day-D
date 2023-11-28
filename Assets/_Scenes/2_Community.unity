@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1590456433}
-  m_IndirectSpecularColor: {r: 0.8642713, g: 0.9113741, b: 0.8935381, a: 1}
+  m_IndirectSpecularColor: {r: 0.2882459, g: 0.50846714, b: 0.68108475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8594,6 +8594,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Controller
       objectReference: {fileID: 0}
+    - target: {fileID: 1389145852940256973, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Renata
+      objectReference: {fileID: 0}
+    - target: {fileID: 2425238350653483819, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Ana
+      objectReference: {fileID: 0}
+    - target: {fileID: 2545173134733234987, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Ana
+      objectReference: {fileID: 0}
     - target: {fileID: 2954307000687356043, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
         type: 3}
       propertyPath: m_fontSize
@@ -8603,6 +8618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontSizeBase
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768255706769725491, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Paula
+      objectReference: {fileID: 0}
+    - target: {fileID: 5444598299633172574, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Ana
       objectReference: {fileID: 0}
     - target: {fileID: 5501081071618845758, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
         type: 3}
@@ -8678,6 +8703,16 @@ PrefabInstance:
         type: 3}
       propertyPath: speedTextTransition
       value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966547592370056947, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Paula
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116334074224320946, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+        type: 3}
+      propertyPath: talkerName
+      value: Paula
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -18932,6 +18967,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.14788754, y: 1.0840273, z: 0.17505823}
   m_Center: {x: -0.014878628, y: -0.6106178, z: -0.043536842}
+--- !u!114 &1677496813 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2954307000687356043, guid: 3608ddcc79a51e14cb3e8e15a76818b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 748255474}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1680907131
 GameObject:
   m_ObjectHideFlags: 0
@@ -30286,6 +30333,7 @@ MonoBehaviour:
   - {fileID: 475248218}
   - {fileID: 912580298}
   accessibilityToggle: {fileID: 1642262679274633646}
+  textSlider: {fileID: 55793329800443165}
   textSizeValue: {fileID: 4446134768900746916}
   textExample: {fileID: 1309787808637098193}
   outlineImageExample: {fileID: 2323760983183444645}
@@ -30293,6 +30341,7 @@ MonoBehaviour:
     type: 3}
   outlineImageSelected: {fileID: 21300000, guid: 50ef5ec65f19b694291e5adfd0f5ad36,
     type: 3}
+  dialogueTextSize: {fileID: 1677496813}
 --- !u!1 &3378886003539977970
 GameObject:
   m_ObjectHideFlags: 0
@@ -37858,7 +37907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &7003681809193657658
 GameObject:
   m_ObjectHideFlags: 0

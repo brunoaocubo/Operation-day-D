@@ -9,7 +9,8 @@ public class Accessibility : MonoBehaviour
 {
     [SerializeField] private List<Outline> outlines;
     [SerializeField] private Toggle accessibilityToggle;
-    
+    [SerializeField] private Slider textSlider;
+
     [Header("Options")]
     [SerializeField] private TextMeshProUGUI textSizeValue;
     [SerializeField] private TextMeshProUGUI textExample;
@@ -17,10 +18,16 @@ public class Accessibility : MonoBehaviour
     [SerializeField] private Sprite outlineImageDefault;
     [SerializeField] private Sprite outlineImageSelected;
 
-    private int outlineEnabled;
+    [Header("DialogueSettings")]
+    [SerializeField] private TextMeshProUGUI dialogueTextSize;
+
+	private int outlineEnabled;
 
     private void Start()
     {
+        textSlider.value = PlayerPrefs.GetFloat("textSize");
+		TextSize(PlayerPrefs.GetFloat("textSize"));
+
         if(SceneManager.GetActiveScene().buildIndex != 1)
         {
             outlineEnabled = PlayerPrefs.GetInt("Outline");
@@ -78,5 +85,11 @@ public class Accessibility : MonoBehaviour
         PlayerPrefs.SetFloat("textSize", value);
         textSizeValue.text = value.ToString("F2");
         textExample.fontSize = 40 * value;
+
+        if(SceneManager.GetActiveScene().buildIndex == 2) 
+        {
+            dialogueTextSize.fontSize = 40 * value;
+        }
     }
+
 }

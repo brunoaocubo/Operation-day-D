@@ -134,18 +134,12 @@ public class HUDController : MonoBehaviour
     {
         musicMixer.SetFloat("musicVolume", musicVolume);
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
-        //database.MusicVolume = musicVolume;
-        //Debug.Log("Volume da Música:" + database.MusicVolume);
-
     }
 
     public void SetEffectVolume(float effectVolume)
     {
         effectMixer.SetFloat("effectVolume", effectVolume);
-		PlayerPrefs.SetFloat("effectVolume", effectVolume);
-
-		//database.EffectVolume = effectVolume;
-		//Debug.Log("Volume do SFX:" + database.EffectVolume);
+        PlayerPrefs.SetFloat("effectVolume", effectVolume);
 	}
 
     public void OptionsFadeIn(CanvasGroup canvasGroup, RectTransform rectTransform, float fadeTime) 

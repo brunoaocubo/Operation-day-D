@@ -10638,6 +10638,7 @@ MonoBehaviour:
   - {fileID: 1889809631}
   - {fileID: 925999390}
   accessibilityToggle: {fileID: 1642262679112717610}
+  textSlider: {fileID: 55793329907554713}
   textSizeValue: {fileID: 4446134768999399968}
   textExample: {fileID: 1309787808530773077}
   outlineImageExample: {fileID: 2323760983088129569}
@@ -10645,6 +10646,7 @@ MonoBehaviour:
     type: 3}
   outlineImageSelected: {fileID: 21300000, guid: 50ef5ec65f19b694291e5adfd0f5ad36,
     type: 3}
+  dialogueTextSize: {fileID: 0}
 --- !u!1 &3378886003445238390
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,7 +48,7 @@ public class DialogueController : MonoBehaviour
         backBT.interactable = false;
     }
 
-    public void UpdateParameters(Dialogue dialogue)
+	public void UpdateParameters(Dialogue dialogue)
     {
         textAreaUI.text = "";
         

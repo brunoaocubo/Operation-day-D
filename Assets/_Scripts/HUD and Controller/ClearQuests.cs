@@ -9,6 +9,7 @@ public class ClearQuests : MonoBehaviour
     public void ClearData()
     {
         PlayerPrefs.SetInt("TutorialComplete", 0);
+        PlayerPrefs.SetFloat("textSize", 1.25f);
         for (int i=0; i<quests.Length; i++)
         {
             quests[i].currentValue = 0;

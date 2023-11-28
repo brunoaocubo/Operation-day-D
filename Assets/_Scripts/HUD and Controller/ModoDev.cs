@@ -14,7 +14,6 @@ public class ModoDev : MonoBehaviour
     }
     public void EscolherFase(int i)
     {
-        //Debug.Log("Ir para cena: " + i);
         SceneManager.LoadScene(i);
     }
 

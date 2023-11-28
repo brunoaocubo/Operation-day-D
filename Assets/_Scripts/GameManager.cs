@@ -27,23 +27,10 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	private void Start()
-	{
-
-	}
-
 	public void LoadScene(int sceneId) 
 	{
-		SceneManager.LoadSceneAsync(sceneId);
+		SceneManager.LoadScene(sceneId);
 	}
-	/*
-	private void OnApplicationQuit()
-	{
-		int lastSceneIndex = SceneManager.GetActiveScene().buildIndex;
-		Debug.Log(lastSceneIndex);
-		PlayerPrefs.SetInt("LastScene", lastSceneIndex);
-		PlayerPrefs.Save();
-	}*/
 
 	public int CheckSceneIndex() 
 	{

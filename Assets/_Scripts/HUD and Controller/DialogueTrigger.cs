@@ -15,7 +15,6 @@ public class DialogueTrigger : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            Debug.Log("Entrou");
             if(!dialogueController.dialogueIsActive)
             {
                 dialogueController.loadOtherLevel = this.loadOtherLevel;
@@ -25,8 +24,6 @@ public class DialogueTrigger : MonoBehaviour
                     dialogueController.dialogues.Add(dialogues[i]);
                 }
                 dialogueController.ShowDialogue();
-				Debug.Log("Passou");
-
 
 				if (loadOtherLevel)
                 {

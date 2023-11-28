@@ -137,6 +137,8 @@ public class ToolAction : MonoBehaviour
 				}
 				if (_hitInfo.collider.TryGetComponent(out WaterIdentity waterToxicIdentity))
 				{
+					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
+
 					_hitInfo.collider.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(waterClean_mat);
 					if (_hitInfo.collider.GetComponentInParent<Outline>() != null)
@@ -144,7 +146,6 @@ public class ToolAction : MonoBehaviour
 						_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
 					}
 					cleanWater_sfx.Play();
-					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
 			}
 		}
@@ -162,6 +163,8 @@ public class ToolAction : MonoBehaviour
 				}
 				if (_hitInfo.collider.TryGetComponent(out WaterIdentity waterToxicIdentity))
 				{
+					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
+
 					_hitInfo.collider.gameObject.GetComponent<Collider>().enabled = false;
 					_hitInfo.collider.GetComponent<Renderer>().material = new Material(clay_mat);
 					if (_hitInfo.collider.GetComponentInParent<Outline>() != null)
@@ -169,7 +172,6 @@ public class ToolAction : MonoBehaviour
 						_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;
 					}
 					shovelObstruct_sfx.Play();
-					questController.UpdateProgressQuest(waterToxicIdentity.QuestID, 1);
 				}
 			}
 		}
@@ -238,6 +240,6 @@ public class ToolAction : MonoBehaviour
 	{
 		_ray = mainCamera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
 		Physics.Raycast(_ray, out _hitInfo, distanceRay);
-		Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
+		//Debug.DrawRay(_ray.origin, _ray.direction * distanceRay, color: Color.red);
 	}
 }

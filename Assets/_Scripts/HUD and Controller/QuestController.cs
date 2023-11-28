@@ -69,7 +69,7 @@ public class QuestController : MonoBehaviour, IQuestController
         if(questsCompleted >= questList.Length && !isLevelComplete)
         {
 			isLevelComplete = true;
-			StartCoroutine(StageCompleted());
+            StageCompleted();
             GameManager.instance.UpdateHouseState(houseController.NameCurrentHouse, 1);
         }
     }
@@ -77,6 +77,7 @@ public class QuestController : MonoBehaviour, IQuestController
     public bool CheckStateQuest(int questID) 
     {
 		bool state = false;
+
 		foreach (Quest quest in questList) 
         {
             if(quest.idQuest == questID)
@@ -87,14 +88,9 @@ public class QuestController : MonoBehaviour, IQuestController
 		return state;
     }
 
-    IEnumerator StageCompleted()
+    public void StageCompleted()
     {
         GameManager.levelsComplete += 1;
-        for(int i=0; i<3; i++)
-        {
-            Debug.Log("Você será movido em: " + i);
-            yield return new WaitForSeconds(1f);
-        }
 
 		if (GameManager.levelsComplete >= 7) 
         {

@@ -18292,6 +18292,7 @@ MonoBehaviour:
   - {fileID: 2067574826}
   - {fileID: 1762109107}
   accessibilityToggle: {fileID: 1642262680039807856}
+  textSlider: {fileID: 55793328636794819}
   textSizeValue: {fileID: 4446134770958290042}
   textExample: {fileID: 1309787810456107535}
   outlineImageExample: {fileID: 2323760981750261883}
@@ -18299,6 +18300,7 @@ MonoBehaviour:
     type: 3}
   outlineImageSelected: {fileID: 21300000, guid: 50ef5ec65f19b694291e5adfd0f5ad36,
     type: 3}
+  dialogueTextSize: {fileID: 0}
 --- !u!33 &3377965156133708371
 MeshFilter:
   m_ObjectHideFlags: 0
