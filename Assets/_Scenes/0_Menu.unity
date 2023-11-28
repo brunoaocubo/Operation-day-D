@@ -651,6 +651,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352540470}
   m_CullTransparentMesh: 1
+--- !u!1 &528315473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 528315475}
+  - component: {fileID: 528315474}
+  m_Layer: 0
+  m_Name: ClearQuests
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &528315474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528315473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7c0e1025ae831541a5feaf5b98fa625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quests:
+  - {fileID: 11400000, guid: 4867f4e98b66e03479ac26e363fa9581, type: 2}
+  - {fileID: 11400000, guid: 7ef443853b3e8104188039f653b0aa11, type: 2}
+  - {fileID: 11400000, guid: 9195c4e02d27a394bbce30cb94a15519, type: 2}
+  - {fileID: 11400000, guid: 4f9139333120c6a449cf1603bc29f459, type: 2}
+  - {fileID: 11400000, guid: 66f84677e2609184183a27c05c32bf04, type: 2}
+  - {fileID: 11400000, guid: d871ba8e4f3244945a1c71d004e552e3, type: 2}
+  - {fileID: 11400000, guid: cc208ad7f24fb86489f982f21ec83582, type: 2}
+  - {fileID: 11400000, guid: b5e8d34734df98b4ba090f518f77840b, type: 2}
+  - {fileID: 11400000, guid: 1fe367e99dbc7794bbeb23ff78cb42a3, type: 2}
+  - {fileID: 11400000, guid: 436a2a59f82654942bb0185fa6b773e5, type: 2}
+  - {fileID: 11400000, guid: ad1376c76a56e8549adb113a4625e3ef, type: 2}
+  - {fileID: 11400000, guid: 1c137d45a34bb7a40a9d28a614e9fb3a, type: 2}
+  - {fileID: 11400000, guid: 1d90988b0e8767e49a7d06297e9c4940, type: 2}
+  - {fileID: 11400000, guid: 274c1cbcc06ed3b4b99c90b0bac643a6, type: 2}
+  - {fileID: 11400000, guid: 31858e629996fc147b9e173b77983068, type: 2}
+  - {fileID: 11400000, guid: c3f5e2e888da2d64eabece24606b7e4f, type: 2}
+  - {fileID: 11400000, guid: d49106bc9f78fee4788504cf7a900f2a, type: 2}
+  - {fileID: 11400000, guid: 935667e40cdbbcd4cba5a2734aeb08c1, type: 2}
+  - {fileID: 11400000, guid: f406bc8b33578ed43ba92c87540b7a9c, type: 2}
+  - {fileID: 11400000, guid: f2798e294780e5c44b731604913987dc, type: 2}
+  - {fileID: 11400000, guid: 85cea892caf44c14d8709151b3bf4c1b, type: 2}
+  - {fileID: 11400000, guid: 72603d4fd2dd6904d99b999ea5a059f5, type: 2}
+  - {fileID: 11400000, guid: 39bbbc436310b3342b0cb24c0c94498a, type: 2}
+--- !u!4 &528315475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 528315473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &540200676
 GameObject:
   m_ObjectHideFlags: 0
@@ -5092,6 +5160,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1929581650}
         m_TargetAssemblyTypeName: HUDController, Assembly-CSharp
         m_MethodName: PlayBT
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 528315474}
+        m_TargetAssemblyTypeName: ClearQuests, Assembly-CSharp
+        m_MethodName: ClearData
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

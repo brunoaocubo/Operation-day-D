@@ -46,10 +46,6 @@ public class DialogueController : MonoBehaviour
 	private void Awake()
     {
         backBT.interactable = false;
-        //if(dialogues.Count>0)
-        //{
-        //    UpdateParameters(dialogues[0]);
-        //}
     }
 
     public void UpdateParameters(Dialogue dialogue)
@@ -75,15 +71,15 @@ public class DialogueController : MonoBehaviour
             this.rightImageUI.enabled = false;
             this.talkerEmptyRight.SetActive(false);
             this.talkerEmptyLeft.SetActive(true);
-            //this.leftImageUI.enabled = true;
         }
-        //this.texto.text = dialogo.messagens[messagemAtual];
-        textsDialogue = dialogue.messages; //
+
+        textsDialogue = dialogue.messages;
         StartCoroutine(WriteText());
     }
 
     public void NextMessage()
     {
+        StopAllCoroutines();
         backBT.interactable = true;
 
         if(currentDialogue < dialogues.Count)
@@ -92,7 +88,6 @@ public class DialogueController : MonoBehaviour
             {
                 currentMessage++;
                 StartCoroutine(WriteText());
-                //texto.text = dialogos[dialogoAtual].messagens[messagemAtual];
             }
             else if (currentDialogue < dialogues.Count-1)
             {
@@ -103,25 +98,21 @@ public class DialogueController : MonoBehaviour
 
             if (currentMessage == dialogues[currentDialogue].messages.Length - 1 && currentDialogue == dialogues.Count - 1)
             {
-                //Debug.Log("Cheguei no limite");
                 nextBT.interactable = false;
             }
         }
-
-        //Debug.Log("Messagem Atual: " + messagemAtual + "; Dialogo Atual: " + dialogoAtual);
     }
 
     public void BackMessage()
     {
+        StopAllCoroutines();
         nextBT.interactable = true;
 
         if (currentMessage>0)
         {
             currentMessage--;
-            //texto.text = dialogos[dialogoAtual].messagens[messagemAtual];
 
             StartCoroutine(WriteText());
-           //Debug.Log("MessagemAtual: " + messagemAtual);
         }
         else if(currentDialogue>0)
         {
@@ -132,17 +123,14 @@ public class DialogueController : MonoBehaviour
 
         if(currentMessage <= 0 && currentDialogue<=0)
         {
-            //Debug.Log("Cheguei ao limite papah");
             backBT.interactable = false;
         }
-        //Debug.Log("Messagem Atual: " + messagemAtual + "; Dialogo Atual: " + dialogoAtual);
     }
 
     IEnumerator WriteText()
     {
         textAreaUI.text = "";
         int messagemAtiva = currentMessage;
-        //Debug.Log(currentMessage);
         foreach (char letra in textsDialogue[currentMessage].ToCharArray())
         {
             if(messagemAtiva == currentMessage)
@@ -176,6 +164,5 @@ public class DialogueController : MonoBehaviour
             SceneManager.LoadScene(nextLevel);
         }
     } 
-    //dialogos[dialogoAtual].messagens[messagemAtual]
 }
 
