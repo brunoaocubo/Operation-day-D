@@ -2,28 +2,25 @@
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
-{
-	
+{	
 	readonly private string _isAttachInsecticide = "isAttachInsecticide";
 	readonly private string _isAttachSanitaryWater = "isAttachSanitaryWater";
 	readonly private string _isAttachShovel = "isAttachShovel";
 
+	[Header("InputsSettings")]
 	[SerializeField] private Inputs inputController;
 	[SerializeField] private RectTransform handleJoystick;
 
 	[Header("Config Player")]
 	[SerializeField] private float moveSpeed = 500f;
 	[SerializeField] private float distanceRay = 1f;
+	[SerializeField] private Animator _anim;
 	[SerializeField] private AudioSource stepFootstep_sfx;
 
 	private ToolAction toolAction;
-
 	private Rigidbody _rigidbody;
 	private Vector2 _inputVector;
-	private Ray _ray;
-	private RaycastHit _hitInfo;
 	private bool _isGrounded = false;
-	[SerializeField] private Animator _anim;
 
 	public RectTransform HandleJoystick { get => handleJoystick; set => handleJoystick = value; }
 
@@ -108,8 +105,6 @@ public class PlayerController : MonoBehaviour
 				_rigidbody.AddForce(force);
 			}
 		}
-		
-		
 	}
 
 	private void ChangeAnimation() 
@@ -139,21 +134,6 @@ public class PlayerController : MonoBehaviour
 		else
 		{
 			_anim.SetBool(_isAttachShovel, false);
-		}
-	}
-
-	public void CheckHouseID() 
-	{
-		_ray = Camera.main.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
-		Physics.Raycast(_ray, out _hitInfo, distanceRay);
-
-		if (_hitInfo.collider != null)
-		{
-			if (_hitInfo.collider.TryGetComponent(out HouseIdentity houseIdentity))
-			{
-				int houseID = houseIdentity.Id;
-				houseIdentity?.PlaySceneHouse(houseID);
-			}
 		}
 	}
 

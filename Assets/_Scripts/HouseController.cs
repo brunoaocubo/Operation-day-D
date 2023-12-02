@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class HouseController : MonoBehaviour
 {
 	[SerializeField] private string nameCurrentHouse;
-
 	[SerializeField] private TextMeshProUGUI timerCount_txt;
 	[SerializeField] private float timerCount;
 	[SerializeField] private AudioSource gameOver_music;

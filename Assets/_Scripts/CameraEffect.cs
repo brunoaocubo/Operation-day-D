@@ -10,9 +10,7 @@ public class CameraEffect : MonoBehaviour
 	[SerializeField][Range(0f, 90f)] private float cameraDefaultFOV = 60;
 	[SerializeField][Range(0f, 90f)] private float cameraTargetFOV = 70;
 
-	Camera mainCamera;
-	private Vector3 cameraOriginalPosition;
-	private bool isEffectRunning = false;
+	private Camera mainCamera;
 
 	private void Start()
 	{
@@ -38,26 +36,5 @@ public class CameraEffect : MonoBehaviour
 			mainCamera.fieldOfView = cameraDefaultFOV;
 
 		}
-	}
-
-	//Atrelado ao botão de Inseticida
-	public void ExecuteElasticEffect()
-	{
-		isEffectRunning = true;
-
-		cameraOriginalPosition = transform.position;
-		// Mover a câmera para trás
-		transform.DOMove(transform.position - transform.forward * 0.2f, 0.2f)
-			.SetEase(Ease.OutQuad)
-			.OnComplete(() =>
-			{
-				// Mover a câmera de volta para a posição original
-				transform.DOMove(cameraOriginalPosition, 0.2f)
-					.SetEase(Ease.InQuad)
-					.OnComplete(() =>
-					{
-						isEffectRunning = false; // Define para false quando o ciclo for concluído
-					});
-			});
 	}
 }

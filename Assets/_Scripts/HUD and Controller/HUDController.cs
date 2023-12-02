@@ -10,9 +10,6 @@ public class HUDController : MonoBehaviour
 {
     private bool openMap = false;
     private bool openQuests = false;
-    private Database database;
-   
-    private GameObject emptyObject;
 
     [Header("Link Objects UI")]
     [SerializeField] private Slider sfxSlider;
@@ -21,7 +18,6 @@ public class HUDController : MonoBehaviour
     [SerializeField] private GameObject mapUI_img;
     [SerializeField] private GameObject questUI_img;
     [SerializeField] private GameObject flyerBT;
-
 
     [Header("Mixers")]
     [SerializeField] private AudioMixer musicMixer;
@@ -37,32 +33,9 @@ public class HUDController : MonoBehaviour
 
     private int outlineEnabled = 0;
 
+
 	private void Start()
     {
-        /*
-        if (FindFirstObjectByType<Database>() != null)
-        {
-            database = FindFirstObjectByType<Database>();
-        }
-        else
-        {
-            emptyObject = new GameObject();
-            emptyObject.name = "Database";
-            emptyObject.AddComponent<Database>();
-            database = emptyObject.GetComponent<Database>();
-        }*/
-
-        //      if(SceneManager.GetActiveScene().buildIndex ==0) // (GameManager.instance.CheckSceneIndex() == 0) 
-        //      {
-        //	if (DataManager.Instance.fileExist)
-        //	{
-        //		continueGame_btn.SetActive(true);
-        //	}
-        //	else
-        //	{
-        //		continueGame_btn.SetActive(false);
-        //	}
-        //}
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             outlineEnabled = PlayerPrefs.GetInt("Outline");
@@ -77,8 +50,6 @@ public class HUDController : MonoBehaviour
             OutlineBT();
         }
             
-        
-
         if (continueGame_btn != null)
         {
 			if (PlayerPrefs.GetInt("TutorialComplete") == 1)
@@ -94,9 +65,7 @@ public class HUDController : MonoBehaviour
 
 		sfxSlider.value = PlayerPrefs.GetFloat("effectVolume");
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
-        //sensibilitySlider.value = PlayerPrefs.GetFloat("sensibility");
-        
-    }
+	}
 
     public void MapActive()
     {
@@ -105,6 +74,7 @@ public class HUDController : MonoBehaviour
         questUI_img.SetActive(openQuests);
         mapUI_img.SetActive(openMap);
     }
+
     public void QuestUIActive()
     {
         openMap = false;
@@ -153,10 +123,8 @@ public class HUDController : MonoBehaviour
     public void OptionsFadeOut(CanvasGroup canvasGroup, RectTransform rectTransform, float fadeTime) 
     {
 		canvasGroup.alpha = 1f;
-		//rectTransform.transform.localPosition = new Vector3(0f, 0f, 0f);
 		rectTransform.DOAnchorPos(new Vector2(-1000f, 0f), fadeTime, false).SetEase(Ease.InOutQuint);
 		canvasGroup.DOFade(0, fadeTime);
-        //canvasGroup.GetComponent<GameObject>().SetActive(false);
 	}
 
     #region Menu
@@ -179,27 +147,27 @@ public class HUDController : MonoBehaviour
     {
         Application.OpenURL("https://www.gov.br/pt-br");
     }
-    #endregion
 
-    public void OutlineBT()
-    {
-        if (outlineEnabled == 0)
-        {
-            outlineEnabled = 1;
-            outlineBT.sprite = outlineSelected;
-            outlineTextBT.text = "DESATIVAR  \n BORDA \n (OBJETOS)";
-        }
-        else
-        {
-            outlineEnabled = 0;
-            outlineBT.sprite = outlineDefault;
-            outlineTextBT.text = "ATIVAR \n BORDA \n (OBJETOS)";
-        }      
-        
-        PlayerPrefs.SetInt("Outline", outlineEnabled);
-    }
+	public void OutlineBT()
+	{
+		if (outlineEnabled == 0)
+		{
+			outlineEnabled = 1;
+			outlineBT.sprite = outlineSelected;
+			outlineTextBT.text = "DESATIVAR  \n BORDA \n (OBJETOS)";
+		}
+		else
+		{
+			outlineEnabled = 0;
+			outlineBT.sprite = outlineDefault;
+			outlineTextBT.text = "ATIVAR \n BORDA \n (OBJETOS)";
+		}
 
-    public void SensibilitySlider(float value)
+		PlayerPrefs.SetInt("Outline", outlineEnabled);
+	}
+	#endregion
+
+	public void SensibilitySlider(float value)
     {
         PlayerPrefs.SetFloat("sensibility", value);
     }

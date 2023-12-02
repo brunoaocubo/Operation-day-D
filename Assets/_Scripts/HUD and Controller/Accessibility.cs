@@ -43,6 +43,7 @@ public class Accessibility : MonoBehaviour
             }
         }
     }
+    
     public void OutlineState(bool state)
     {
         for(int i=0; i<outlines.Count; i++)
@@ -69,15 +70,6 @@ public class Accessibility : MonoBehaviour
 		{
 			outlines[outline].enabled = state;
 		}
-/*
-		if (state)
-		{
-			PlayerPrefs.SetInt("Outline", 1);
-		}
-		else
-		{
-			PlayerPrefs.SetInt("Outline", 0);
-		}*/
 	}
 
     public void TextSize(float value)

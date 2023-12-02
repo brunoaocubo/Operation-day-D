@@ -31,7 +31,6 @@ public class ToolAction : MonoBehaviour
 	[SerializeField] protected AudioSource pickupItem_sfx;
 
 	[Header("Quests")]
-	//[SerializeField] private int idQuest;
 	protected QuestController questController;
 
 	[Header("CameraElastic")]
@@ -102,7 +101,6 @@ public class ToolAction : MonoBehaviour
 	{
 		if (holdButton[0].IsClicked)
 		{
-			cameraEffect.ExecuteElasticEffect();
 			if (_hitInfo.collider.GetComponentInParent<Outline>()!= null)
 			{
 				_hitInfo.collider.GetComponentInParent<Outline>().enabled = false;

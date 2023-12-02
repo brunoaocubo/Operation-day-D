@@ -51,18 +51,6 @@ public class Tutorial : MonoBehaviour
 		}
 	}
 
-	private void Update()
-	{
-		if (questController.CheckStateQuest(0) &&
-			questController.CheckStateQuest(1) &&
-			questController.CheckStateQuest(2) &&
-			questController.CheckStateQuest(3) &&
-			questController.CheckStateQuest(4)) 
-		{
-			PlayerPrefs.SetInt("TutorialComplete", 1);
-		}
-	}
-
 	private IEnumerator PlaySecondCutsceneTutorial()
 	{
 		Player.HandleJoystick.localPosition = Vector3.zero;

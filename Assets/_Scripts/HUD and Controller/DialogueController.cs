@@ -61,7 +61,6 @@ public class DialogueController : MonoBehaviour
             this.talkerEmptyLeft.SetActive(false);
             this.talkerEmptyRight.SetActive(true);
             //this.leftImageUI.enabled = false;
-
         }
         else
         {

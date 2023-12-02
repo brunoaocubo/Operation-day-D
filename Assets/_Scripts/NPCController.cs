@@ -3,10 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NPCController : MonoBehaviour
-{
-	[SerializeField] private int idNpc;
-	public int IdNpc { get => idNpc; }
-
+{ 
 	private Animator _animator;
 	private Vector3 _originalDirection;
 	private void Start()

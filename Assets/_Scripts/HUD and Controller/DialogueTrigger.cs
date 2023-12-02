@@ -7,7 +7,6 @@ public class DialogueTrigger : MonoBehaviour
     [SerializeField] private int nextLevel;
     [SerializeField] private bool loadOtherLevel;
 
-    //[SerializeField] private Collider col;
     [SerializeField] private DialogueController dialogueController;
     [SerializeField] private Dialogue[] dialogues;
 

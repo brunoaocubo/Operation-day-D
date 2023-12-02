@@ -21209,7 +21209,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &4457035552109266990
 GameObject:
   m_ObjectHideFlags: 0
@@ -25641,8 +25641,8 @@ MonoBehaviour:
   handleJoystick: {fileID: 6540169806635629551}
   moveSpeed: 300
   distanceRay: 3
-  stepFootstep_sfx: {fileID: 266702035900373450}
   _anim: {fileID: 2513500589497503520}
+  stepFootstep_sfx: {fileID: 266702035900373450}
 --- !u!114 &6083324929859625893
 MonoBehaviour:
   m_ObjectHideFlags: 0

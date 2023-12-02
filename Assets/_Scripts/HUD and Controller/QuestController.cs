@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
-public class QuestController : MonoBehaviour, IQuestController
+public class QuestController : MonoBehaviour
 {
     [SerializeField] private int nextLevel;
     [SerializeField] private HouseController houseController;
@@ -17,7 +18,6 @@ public class QuestController : MonoBehaviour, IQuestController
     private int questsRemaing;
     private int questsCompleted = 0;
     private bool isLevelComplete = false;
-
 
     private void Start()
     {
@@ -59,7 +59,6 @@ public class QuestController : MonoBehaviour, IQuestController
                         quest_txt[i].color = Color.red;
 						questsCompleted++;
 						questsProgressUI.text = "Missões: " + questsCompleted + "/" + questsRemaing;
-
 					}
                 }
             }
@@ -95,6 +94,11 @@ public class QuestController : MonoBehaviour, IQuestController
 		if (GameManager.levelsComplete >= 7) 
         {
             nextLevel = 10;
+		}
+
+        if (SceneManager.GetActiveScene().buildIndex == 1) 
+        {
+			PlayerPrefs.SetInt("TutorialComplete", 1);
 		}
 
 		GameManager.instance.LoadScene(nextLevel);
