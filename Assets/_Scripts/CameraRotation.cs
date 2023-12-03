@@ -12,6 +12,8 @@ public class CameraRotation : MonoBehaviour
 	private float rotationX, rotationY;
 	private bool isRotationInitialized = false;
 
+	public float RotationSensitivity { get => rotationSensitivity; set => rotationSensitivity = value; }
+
 	private void Update()
 	{
 		ExecuteRotation();
@@ -33,8 +35,8 @@ public class CameraRotation : MonoBehaviour
 					touchDeltaPosY = touch.deltaPosition.y;
 				}
 
-				touchDeltaPosX *= rotationSensitivity;
-				touchDeltaPosY *= rotationSensitivity;
+				touchDeltaPosX *= RotationSensitivity;
+				touchDeltaPosY *= RotationSensitivity;
 
 				if (!isRotationInitialized)
 				{

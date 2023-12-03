@@ -167,9 +167,9 @@ public class HUDController : MonoBehaviour
 	}
 	#endregion
 
-	public void SensibilitySlider(float value)
+	public void SensibilitySlider()
     {
-        PlayerPrefs.SetFloat("sensibility", value);
+        PlayerPrefs.SetFloat("sensibility", sensibilitySlider.value);
     }
 
     public void LoadScene(int value)
