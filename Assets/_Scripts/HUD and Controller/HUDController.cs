@@ -65,6 +65,7 @@ public class HUDController : MonoBehaviour
 
 		sfxSlider.value = PlayerPrefs.GetFloat("effectVolume");
         musicSlider.value = PlayerPrefs.GetFloat("musicVolume");
+        sensibilitySlider.value = PlayerPrefs.GetFloat("sensibility");
 	}
 
     public void MapActive()

@@ -22,8 +22,7 @@ public class Flyer : MonoBehaviour
     private int[] flyerCollected = new int[6];
 
     private void Start()
-    {
-        UpdateFlyer();
+    { 
         for(int i=0; i<flyerCollected.Length; i++)
         {
             if(i < GameManager.levelsComplete - 1) 
@@ -31,6 +30,7 @@ public class Flyer : MonoBehaviour
 				flyerCollected[i] = 1;
             }
         }
+        UpdateFlyer();
     }
 
     public void NextFlyerBT()
