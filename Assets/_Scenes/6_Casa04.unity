@@ -3875,7 +3875,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameCurrentHouse: House04
   timerCount_txt: {fileID: 7816340769572609618}
-  timerCount: 300
+  timerCount: 305
   gameOver_music: {fileID: 60237515}
   currentScene: 6
 --- !u!1 &1130477808

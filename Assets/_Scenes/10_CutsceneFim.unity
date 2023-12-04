@@ -380,8 +380,8 @@ MonoBehaviour:
   delayCheck: 2
   dragDistance: 2.01
   historyImage:
-  - {fileID: 21300000, guid: 1957b5fe78f4c48478f2a48327c78068, type: 3}
-  - {fileID: 21300000, guid: 0654417436133d941ac0930af33f33b2, type: 3}
+  - {fileID: 21300000, guid: 9c2ff68fdbc9a7944937347f0f71f011, type: 3}
+  - {fileID: 21300000, guid: 4f36dba959b96fb49837c40901783775, type: 3}
   - {fileID: 21300000, guid: 7ed0343ef7eec8b47be18899f22ffaa5, type: 3}
   cutsImageUI: {fileID: 1709210144}
   cutsceneBT: {fileID: 1546728370}
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1957b5fe78f4c48478f2a48327c78068, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9c2ff68fdbc9a7944937347f0f71f011, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
